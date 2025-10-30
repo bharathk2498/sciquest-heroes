@@ -144,25 +144,40 @@
             100% { transform: scale(1) rotate(0); }
         }
 
-        .character-avatar {
-            width: 200px;
-            height: 200px;
+        .character-avatar-wrapper {
+            width: 180px;
+            height: 180px;
             margin: 0 auto 24px;
             position: relative;
             transition: all 0.4s ease;
             transform-style: preserve-3d;
         }
 
-        .avatar-3d-card:hover .character-avatar {
-            transform: scale(1.1) rotateY(15deg);
+        .avatar-3d-card:hover .character-avatar-wrapper {
+            transform: scale(1.1) rotate(-5deg);
+            animation: wiggle 0.5s ease-in-out;
         }
 
-        .character-avatar svg {
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        @keyframes wiggle {
+            0%, 100% { transform: scale(1.1) rotate(-5deg); }
+            25% { transform: scale(1.1) rotate(-8deg); }
+            75% { transform: scale(1.1) rotate(-2deg); }
         }
 
-        .avatar-3d-card:hover .character-avatar svg {
-            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.4));
+        .character-main-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 90px;
+            border: 6px solid rgba(255,255,255,0.3);
+            box-shadow: 
+                0 10px 40px rgba(0,0,0,0.3),
+                inset 0 -10px 20px rgba(0,0,0,0.1),
+                inset 0 10px 20px rgba(255,255,255,0.2);
         }
 
         .specialty-badge-3d {
@@ -455,15 +470,6 @@
             0% { background-position: -1000px 0; }
             100% { background-position: 1000px 0; }
         }
-
-        @keyframes avatarBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .character-avatar:hover {
-            animation: avatarBounce 0.6s ease-in-out;
-        }
     </style>
 </head>
 <body>
@@ -604,28 +610,13 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-16">
                 
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Aria', 'Science Explorer', '👧🔬')">
-                    <div class="character-avatar">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="ariaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#c44569;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="70" r="45" fill="url(#ariaGrad)"/>
-                            <circle cx="85" cy="65" r="6" fill="#fff"/>
-                            <circle cx="115" cy="65" r="6" fill="#fff"/>
-                            <circle cx="87" cy="67" r="3" fill="#000"/>
-                            <circle cx="117" cy="67" r="3" fill="#000"/>
-                            <path d="M 85 80 Q 100 88 115 80" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#4A90E2"/>
-                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#4A90E2"/>
-                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#4A90E2"/>
-                            <circle cx="60" cy="130" r="8" fill="#fff" opacity="0.3"/>
-                            <path d="M 60 40 Q 70 25 100 30 Q 130 25 140 40" fill="#8B4513" stroke="#6B3410" stroke-width="2"/>
-                            <circle cx="180" cy="80" r="25" fill="#E8F4F8" opacity="0.7"/>
-                            <text x="180" y="88" font-size="20" text-anchor="middle">🔬</text>
-                        </svg>
+                    <div class="character-avatar-wrapper">
+                        <div class="character-main-circle" style="background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);">
+                            <span style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">👧🏻</span>
+                            <div style="position: absolute; top: -5px; right: -5px; background: linear-gradient(135deg, #4A90E2, #67B3FF); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; border: 4px solid white; box-shadow: 0 4px 12px rgba(74,144,226,0.6);">🔬</div>
+                            <div style="position: absolute; bottom: 10px; left: 20px; background: #FFD700; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white;"></div>
+                            <div style="position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.4); width: 40px; height: 40px; border-radius: 50%; filter: blur(8px);"></div>
+                        </div>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Aria</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Science Explorer</p>
@@ -633,28 +624,13 @@
                 </div>
 
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Zion', 'Space Captain', '👦🚀')">
-                    <div class="character-avatar">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="zionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="70" r="45" fill="url(#zionGrad)"/>
-                            <rect x="70" y="25" width="60" height="30" rx="15" fill="#1a1a2e" opacity="0.8"/>
-                            <circle cx="85" cy="65" r="6" fill="#fff"/>
-                            <circle cx="115" cy="65" r="6" fill="#fff"/>
-                            <circle cx="87" cy="67" r="3" fill="#000"/>
-                            <circle cx="117" cy="67" r="3" fill="#000"/>
-                            <path d="M 85 78 Q 100 85 115 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#FF6B35"/>
-                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#FF6B35"/>
-                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#FF6B35"/>
-                            <polygon points="100,40 95,50 105,50" fill="#FFD700"/>
-                            <circle cx="170" cy="60" r="20" fill="#FFE5B4" opacity="0.8"/>
-                            <text x="170" y="68" font-size="18" text-anchor="middle">🚀</text>
-                        </svg>
+                    <div class="character-avatar-wrapper">
+                        <div class="character-main-circle" style="background: linear-gradient(135deg, #667eea 0%, #9c88ff 100%);">
+                            <span style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">👦🏻</span>
+                            <div style="position: absolute; top: -5px; right: -5px; background: linear-gradient(135deg, #FF6B35, #F95738); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; border: 4px solid white; box-shadow: 0 4px 12px rgba(255,107,53,0.6);">🚀</div>
+                            <div style="position: absolute; bottom: 10px; right: 20px; background: #FFD700; width: 18px; height: 18px; border-radius: 50%; border: 3px solid white;"></div>
+                            <div style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.4); width: 35px; height: 35px; border-radius: 50%; filter: blur(8px);"></div>
+                        </div>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Zion</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Space Captain</p>
@@ -662,28 +638,13 @@
                 </div>
 
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Luna', 'Ocean Explorer', '👧🌊')">
-                    <div class="character-avatar">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="lunaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="70" r="45" fill="url(#lunaGrad)"/>
-                            <circle cx="85" cy="65" r="6" fill="#fff"/>
-                            <circle cx="115" cy="65" r="6" fill="#fff"/>
-                            <circle cx="87" cy="67" r="3" fill="#000"/>
-                            <circle cx="117" cy="67" r="3" fill="#000"/>
-                            <path d="M 85 80 Q 100 88 115 80" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#00CED1"/>
-                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#00CED1"/>
-                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#00CED1"/>
-                            <path d="M 50 35 Q 60 20 80 25 Q 90 20 100 25" fill="#4169E1" stroke="#1E3A8A" stroke-width="2"/>
-                            <path d="M 100 25 Q 110 20 120 25 Q 140 20 150 35" fill="#4169E1" stroke="#1E3A8A" stroke-width="2"/>
-                            <circle cx="175" cy="75" r="22" fill="#B0E0E6" opacity="0.7"/>
-                            <text x="175" y="83" font-size="18" text-anchor="middle">🌊</text>
-                        </svg>
+                    <div class="character-avatar-wrapper">
+                        <div class="character-main-circle" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">👧🏽</span>
+                            <div style="position: absolute; top: -5px; right: -5px; background: linear-gradient(135deg, #00CED1, #20B2AA); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; border: 4px solid white; box-shadow: 0 4px 12px rgba(0,206,209,0.6);">🌊</div>
+                            <div style="position: absolute; bottom: 15px; left: 25px; background: #87CEEB; width: 22px; height: 22px; border-radius: 50%; border: 3px solid white;"></div>
+                            <div style="position: absolute; top: 25px; left: 25px; background: rgba(255,255,255,0.4); width: 38px; height: 38px; border-radius: 50%; filter: blur(8px);"></div>
+                        </div>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Luna</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Ocean Explorer</p>
@@ -691,29 +652,13 @@
                 </div>
 
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'River', 'Nature Hero', '👦🌳')">
-                    <div class="character-avatar">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#56ab2f;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#a8e063;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="70" r="45" fill="url(#riverGrad)"/>
-                            <circle cx="85" cy="65" r="6" fill="#fff"/>
-                            <circle cx="115" cy="65" r="6" fill="#fff"/>
-                            <circle cx="87" cy="67" r="3" fill="#000"/>
-                            <circle cx="117" cy="67" r="3" fill="#000"/>
-                            <path d="M 85 78 Q 100 85 115 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#8B4513"/>
-                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#8B4513"/>
-                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#8B4513"/>
-                            <path d="M 70 40 Q 80 25 100 30 Q 120 25 130 40" fill="#654321" stroke="#4A3010" stroke-width="2"/>
-                            <circle cx="90" cy="35" r="8" fill="#228B22"/>
-                            <circle cx="110" cy="35" r="8" fill="#32CD32"/>
-                            <circle cx="175" cy="70" r="23" fill="#E8F5E9" opacity="0.8"/>
-                            <text x="175" y="78" font-size="18" text-anchor="middle">🌱</text>
-                        </svg>
+                    <div class="character-avatar-wrapper">
+                        <div class="character-main-circle" style="background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);">
+                            <span style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">👦🏾</span>
+                            <div style="position: absolute; top: -5px; right: -5px; background: linear-gradient(135deg, #228B22, #32CD32); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; border: 4px solid white; box-shadow: 0 4px 12px rgba(34,139,34,0.6);">🌱</div>
+                            <div style="position: absolute; bottom: 10px; right: 20px; background: #90EE90; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white;"></div>
+                            <div style="position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.4); width: 40px; height: 40px; border-radius: 50%; filter: blur(8px);"></div>
+                        </div>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">River</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Nature Hero</p>
@@ -721,29 +666,13 @@
                 </div>
 
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Nova', 'Super Inventor', '👧⚡')">
-                    <div class="character-avatar">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="novaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#ffd89b;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="70" r="45" fill="url(#novaGrad)"/>
-                            <circle cx="85" cy="65" r="6" fill="#fff"/>
-                            <circle cx="115" cy="65" r="6" fill="#fff"/>
-                            <circle cx="87" cy="67" r="3" fill="#000"/>
-                            <circle cx="117" cy="67" r="3" fill="#000"/>
-                            <path d="M 85 80 Q 100 88 115 80" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#9B59B6"/>
-                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#9B59B6"/>
-                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#9B59B6"/>
-                            <circle cx="70" cy="40" r="12" fill="#FFD700"/>
-                            <circle cx="130" cy="40" r="12" fill="#FFD700"/>
-                            <rect x="80" y="28" width="40" height="8" rx="4" fill="#333"/>
-                            <circle cx="170" cy="80" r="24" fill="#FFF9C4" opacity="0.8"/>
-                            <text x="170" y="88" font-size="18" text-anchor="middle">⚡</text>
-                        </svg>
+                    <div class="character-avatar-wrapper">
+                        <div class="character-main-circle" style="background: linear-gradient(135deg, #ffd89b 0%, #f093fb 100%);">
+                            <span style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">👧🏼</span>
+                            <div style="position: absolute; top: -5px; right: -5px; background: linear-gradient(135deg, #9B59B6, #E056FD); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; border: 4px solid white; box-shadow: 0 4px 12px rgba(155,89,182,0.6);">⚡</div>
+                            <div style="position: absolute; bottom: 15px; left: 20px; background: #FFD700; width: 18px; height: 18px; border-radius: 50%; border: 3px solid white;"></div>
+                            <div style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.4); width: 36px; height: 36px; border-radius: 50%; filter: blur(8px);"></div>
+                        </div>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Nova</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Super Inventor</p>
@@ -751,28 +680,13 @@
                 </div>
 
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Max', 'Dino Detective', '👦🦖')">
-                    <div class="character-avatar">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="maxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FFE66D;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="70" r="45" fill="url(#maxGrad)"/>
-                            <circle cx="85" cy="65" r="6" fill="#fff"/>
-                            <circle cx="115" cy="65" r="6" fill="#fff"/>
-                            <circle cx="87" cy="67" r="3" fill="#000"/>
-                            <circle cx="117" cy="67" r="3" fill="#000"/>
-                            <path d="M 85 78 Q 100 85 115 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#E67E22"/>
-                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#E67E22"/>
-                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#E67E22"/>
-                            <ellipse cx="100" cy="35" rx="35" ry="15" fill="#D35400"/>
-                            <rect x="90" y="25" width="20" height="15" fill="#8B4513"/>
-                            <circle cx="170" cy="75" r="25" fill="#FFE4B5" opacity="0.8"/>
-                            <text x="170" y="83" font-size="20" text-anchor="middle">🦖</text>
-                        </svg>
+                    <div class="character-avatar-wrapper">
+                        <div class="character-main-circle" style="background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);">
+                            <span style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">👦🏻</span>
+                            <div style="position: absolute; top: -5px; right: -5px; background: linear-gradient(135deg, #E67E22, #D35400); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; border: 4px solid white; box-shadow: 0 4px 12px rgba(230,126,34,0.6);">🦖</div>
+                            <div style="position: absolute; bottom: 10px; left: 20px; background: #FF8C42; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white;"></div>
+                            <div style="position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.4); width: 40px; height: 40px; border-radius: 50%; filter: blur(8px);"></div>
+                        </div>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Max</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Dino Detective</p>
