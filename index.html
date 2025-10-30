@@ -312,6 +312,76 @@
             transform: scale(1.2) rotate(10deg);
             transition: transform 0.3s ease;
         }
+
+        /* Avatar Selection Styles */
+        .avatar-card {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .avatar-card:hover {
+            transform: translateY(-12px) scale(1.08);
+        }
+
+        .avatar-card.selected {
+            transform: translateY(-12px) scale(1.1);
+        }
+
+        .avatar-card.selected::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            border-radius: 24px;
+            z-index: -1;
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .avatar-emoji {
+            font-size: 4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-card:hover .avatar-emoji {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .check-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.5);
+        }
+
+        .avatar-card.selected .check-badge {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .avatar-bounce {
+            animation: avatarBounce 0.6s ease;
+        }
+
+        @keyframes avatarBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
     </style>
 </head>
 <body class="mesh-gradient">
@@ -434,6 +504,121 @@
                     </div>
                     <!-- Glow Orb -->
                     <div class="absolute top-10 right-10 w-32 h-32 bg-purple-500/30 rounded-full blur-3xl blob"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avatar Selection Section -->
+    <section id="avatars" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/20 via-purple-900/10 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-block px-5 py-2 glass rounded-full text-sm font-semibold shimmer mb-6">
+                    ✨ Choose Your Science Hero
+                </div>
+                <h2 class="font-space text-4xl md:text-5xl font-bold mb-4">
+                    Pick Your
+                    <span class="gradient-text">Adventure Companion</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Every hero has unique abilities and learning styles. Choose the one that matches your personality!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-12">
+                <!-- Avatar 1: Boy - Curious Explorer -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Max Explorer')">
+                    <div class="avatar-emoji mb-4">👦🔬</div>
+                    <h4 class="font-bold text-lg mb-1">Max</h4>
+                    <p class="text-xs text-gray-400">Explorer</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Avatar 2: Girl - Tech Genius -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Luna Tech')">
+                    <div class="avatar-emoji mb-4">👧💻</div>
+                    <h4 class="font-bold text-lg mb-1">Luna</h4>
+                    <p class="text-xs text-gray-400">Tech Genius</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Avatar 3: Boy - Space Cadet -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Zion Astronaut')">
+                    <div class="avatar-emoji mb-4">🧑‍🚀🚀</div>
+                    <h4 class="font-bold text-lg mb-1">Zion</h4>
+                    <p class="text-xs text-gray-400">Astronaut</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Avatar 4: Boy - Ocean Explorer -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Noah Marine')">
+                    <div class="avatar-emoji mb-4">👦🌊</div>
+                    <h4 class="font-bold text-lg mb-1">Noah</h4>
+                    <p class="text-xs text-gray-400">Marine Biologist</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Avatar 5: Girl - Chemistry Wizard -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Aria Chemist')">
+                    <div class="avatar-emoji mb-4">👩‍🔬⚗️</div>
+                    <h4 class="font-bold text-lg mb-1">Aria</h4>
+                    <p class="text-xs text-gray-400">Chemist</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Avatar 6: Boy - Robotics Engineer -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Kai Robot')">
+                    <div class="avatar-emoji mb-4">👦🤖</div>
+                    <h4 class="font-bold text-lg mb-1">Kai</h4>
+                    <p class="text-xs text-gray-400">Engineer</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Avatar 7: Non-binary - Eco Warrior -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'River Eco')">
+                    <div class="avatar-emoji mb-4">🧑‍🦱🌱</div>
+                    <h4 class="font-bold text-lg mb-1">River</h4>
+                    <p class="text-xs text-gray-400">Eco Warrior</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Avatar 8: Non-binary - Inventor -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Phoenix Inventor')">
+                    <div class="avatar-emoji mb-4">🧑‍🔧⚡</div>
+                    <h4 class="font-bold text-lg mb-1">Phoenix</h4>
+                    <p class="text-xs text-gray-400">Inventor</p>
+                    <div class="check-badge">
+                        <i class="fas fa-check text-white text-lg"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selected Avatar Display -->
+            <div class="text-center reveal">
+                <div id="avatarFeedback" class="glass p-8 rounded-3xl max-w-2xl mx-auto" style="display: none;">
+                    <div class="text-6xl mb-4" id="selectedEmoji">👦🔬</div>
+                    <h3 class="text-3xl font-bold mb-2">
+                        Welcome, <span class="gradient-text" id="selectedName">Explorer</span>!
+                    </h3>
+                    <p class="text-gray-300 mb-6">Your science adventure begins now. Let's discover amazing things together!</p>
+                    <button class="btn-primary px-8 py-4 rounded-xl font-bold text-lg magnetic">
+                        <i class="fas fa-rocket mr-2"></i>Start Learning
+                    </button>
                 </div>
             </div>
         </div>
@@ -898,6 +1083,40 @@
     </footer>
 
     <script>
+        // Avatar Selection Logic
+        let selectedAvatar = null;
+
+        function selectAvatar(element, name) {
+            // Remove previous selection
+            if (selectedAvatar) {
+                selectedAvatar.classList.remove('selected');
+            }
+            
+            // Add selection to clicked avatar
+            element.classList.add('selected');
+            element.classList.add('avatar-bounce');
+            selectedAvatar = element;
+            
+            // Update feedback display
+            const emoji = element.querySelector('.avatar-emoji').textContent;
+            document.getElementById('selectedEmoji').textContent = emoji;
+            document.getElementById('selectedName').textContent = name;
+            document.getElementById('avatarFeedback').style.display = 'block';
+            
+            // Smooth scroll to feedback
+            setTimeout(() => {
+                document.getElementById('avatarFeedback').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }, 100);
+            
+            // Remove bounce class after animation
+            setTimeout(() => {
+                element.classList.remove('avatar-bounce');
+            }, 600);
+        }
+
         // Custom Cursor
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
