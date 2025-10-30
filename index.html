@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SciQuest Heroes - Where Science Meets Adventure</title>
+    <meta name="description" content="AI-powered science adventures that make learning irresistible for kids">
+    <title>SciQuest Heroes - Where Science Meets Epic Adventures</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+        }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
+            background: #020617;
+            color: white;
             overflow-x: hidden;
         }
 
@@ -23,61 +34,248 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Animated Gradient Background */
-        .gradient-bg {
-            background: linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+        /* Advanced Mesh Gradient */
+        .mesh-gradient {
+            background: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.4) 0px, transparent 50%),
+                radial-gradient(at 50% 0%, rgba(139, 92, 246, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.4) 0px, transparent 50%);
+            background-color: #020617;
+            animation: meshShift 15s ease infinite;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
+        @keyframes meshShift {
+            0%, 100% { background-position: 0% 0%, 50% 0%, 100% 0%; }
+            50% { background-position: 100% 100%, 50% 100%, 0% 100%; }
+        }
+
+        /* Cursor Follower */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.2s ease-out;
+        }
+
+        /* 3D Card Tilt */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+        }
+
+        /* Glass Morphism */
+        .glass {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-strong {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #00f2fe);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 8s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        }
+
+        /* Glow Effects */
+        .glow-primary {
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.6),
+                        0 0 100px rgba(99, 102, 241, 0.4);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Smooth Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Floating Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
         .float {
-            animation: float 3s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* Pulse Animation */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(3deg); }
         }
 
-        .pulse-slow {
-            animation: pulse 4s ease-in-out infinite;
+        /* Particle Background */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particles 20s linear infinite;
         }
 
-        /* Card Hover Effect */
+        @keyframes particles {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* Enhanced Button */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Card Hover */
         .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateY(-15px) scale(1.03);
         }
 
-        /* Glow Effect */
-        .glow {
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6),
-                        0 0 60px rgba(118, 75, 162, 0.4);
+        /* Blob Animation */
+        .blob {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: blobAnim 8s ease-in-out infinite;
         }
 
-        /* Parallax Stars */
+        @keyframes blobAnim {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            75% { border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%; }
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmerAnim 3s infinite;
+        }
+
+        @keyframes shimmerAnim {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Stats Counter */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+
+        /* Marquee */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        /* Stars */
         .stars {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
+            z-index: 0;
         }
 
         .star {
@@ -86,113 +284,139 @@
             height: 2px;
             background: white;
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            animation: twinkle 4s infinite;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
+            0%, 100% { opacity: 0.2; }
             50% { opacity: 1; }
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
+        /* Pulse */
+        .pulse-slow {
+            animation: pulse 4s ease-in-out infinite;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #1a1a2e;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
+        /* Magnetic Effect */
+        .magnetic {
+            transition: transform 0.2s ease-out;
         }
 
-        /* Glass Morphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        /* Interactive Icon */
+        .icon-interactive:hover {
+            transform: scale(1.2) rotate(10deg);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="mesh-gradient">
     
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" style="width: 0%"></div>
+
+    <!-- Particle Background -->
+    <div class="particles-container fixed inset-0 pointer-events-none z-0"></div>
+
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass">
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center glow">
-                        <i class="fas fa-rocket text-2xl"></i>
+                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center glow-primary relative overflow-hidden">
+                        <div class="shimmer absolute inset-0"></div>
+                        <i class="fas fa-atom text-2xl relative z-10 icon-interactive"></i>
                     </div>
-                    <span class="font-space text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">SciQuest Heroes</span>
+                    <span class="font-space text-2xl font-bold gradient-text">SciQuest Heroes</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="hover:text-purple-400 transition">Features</a>
-                    <a href="#adventures" class="hover:text-purple-400 transition">Adventures</a>
-                    <a href="#testimonials" class="hover:text-purple-400 transition">Reviews</a>
-                    <a href="#pricing" class="hover:text-purple-400 transition">Pricing</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-300 hover:text-white transition font-medium">Features</a>
+                    <a href="#adventures" class="text-gray-300 hover:text-white transition font-medium">Adventures</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-white transition font-medium">Reviews</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition font-medium">Pricing</a>
+                    <button class="px-6 py-2.5 glass rounded-xl font-semibold hover:bg-white/20 transition magnetic">
+                        Sign In
+                    </button>
+                    <button class="btn-primary px-6 py-2.5 rounded-xl font-semibold magnetic">
+                        Start Free <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
                 </div>
-                <button class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-xl font-semibold hover:scale-105 transition glow">
-                    Start Free Trial
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden glass p-3 rounded-xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 h-full w-80 glass-strong z-50 p-8 lg:hidden" id="mobileMenu">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="flex flex-col space-y-6 mt-16">
+            <a href="#features" onclick="toggleMobileMenu()" class="text-xl hover:text-purple-400 transition">Features</a>
+            <a href="#adventures" onclick="toggleMobileMenu()" class="text-xl hover:text-purple-400 transition">Adventures</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="text-xl hover:text-purple-400 transition">Reviews</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" class="text-xl hover:text-purple-400 transition">Pricing</a>
+            <div class="pt-6 space-y-4">
+                <button class="w-full glass px-6 py-3 rounded-xl font-semibold">Sign In</button>
+                <button class="w-full btn-primary px-6 py-3 rounded-xl font-semibold">Start Free</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center gradient-bg overflow-hidden pt-20">
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
         <div class="stars"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-left space-y-8">
-                    <div class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold backdrop-blur-lg">
+                    <div class="inline-block px-5 py-2 glass rounded-full text-sm font-semibold shimmer">
                         🎉 Join 50,000+ Young Scientists
                     </div>
-                    <h1 class="font-space text-6xl md:text-7xl font-bold leading-tight">
+                    <h1 class="font-space text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-glow">
                         Where Science Meets
-                        <span class="block bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
+                        <span class="block gradient-text mt-2">
                             Epic Adventures
                         </span>
                     </h1>
-                    <p class="text-xl text-white/90 leading-relaxed">
+                    <p class="text-xl text-gray-300 leading-relaxed max-w-xl">
                         Transform learning into an extraordinary journey. Interactive experiments, real-world missions, and AI-powered guidance make science irresistibly fun.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition shadow-2xl">
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button class="bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition shadow-2xl magnetic">
                             <i class="fas fa-play mr-2"></i>Start Your Quest
                         </button>
-                        <button class="glass px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition">
+                        <button class="glass px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition magnetic">
                             <i class="fas fa-video mr-2"></i>Watch Demo
                         </button>
                     </div>
-                    <div class="flex items-center space-x-8 pt-4">
+                    <div class="flex items-center gap-8 pt-4 flex-wrap">
                         <div>
-                            <div class="text-3xl font-bold">4.9/5</div>
-                            <div class="text-sm text-white/70">★★★★★ Rating</div>
+                            <div class="text-4xl font-bold counter" data-target="4.9">4.9</div>
+                            <div class="text-sm text-gray-400">★★★★★ Rating</div>
                         </div>
-                        <div class="h-12 w-px bg-white/30"></div>
+                        <div class="h-12 w-px bg-white/20"></div>
                         <div>
-                            <div class="text-3xl font-bold">100K+</div>
-                            <div class="text-sm text-white/70">Active Learners</div>
+                            <div class="text-4xl font-bold counter" data-target="100000">100K+</div>
+                            <div class="text-sm text-gray-400">Active Learners</div>
                         </div>
-                        <div class="h-12 w-px bg-white/30"></div>
+                        <div class="h-12 w-px bg-white/20"></div>
                         <div>
-                            <div class="text-3xl font-bold">500+</div>
-                            <div class="text-sm text-white/70">Adventures</div>
+                            <div class="text-4xl font-bold counter" data-target="500">500+</div>
+                            <div class="text-sm text-gray-400">Adventures</div>
                         </div>
                     </div>
                 </div>
@@ -200,106 +424,129 @@
                     <div class="float">
                         <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=600&fit=crop" 
                              alt="Kid with VR" 
-                             class="rounded-3xl shadow-2xl glow">
+                             class="rounded-3xl shadow-2xl w-full">
                     </div>
-                    <div class="absolute -bottom-10 -left-10 bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 pulse-slow">
-                        <div class="text-4xl mb-2">🔬</div>
-                        <div class="font-bold">Live Experiments</div>
-                        <div class="text-sm text-white/70">Real-time guidance</div>
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 glass p-6 rounded-2xl pulse-slow">
+                        <div class="text-5xl mb-2">🔬</div>
+                        <div class="font-bold text-lg">Live Experiments</div>
+                        <div class="text-sm text-gray-400">Real-time guidance</div>
                     </div>
+                    <!-- Glow Orb -->
+                    <div class="absolute top-10 right-10 w-32 h-32 bg-purple-500/30 rounded-full blur-3xl blob"></div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Trust Badges -->
+    <section class="py-12 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-gray-400 mb-8 text-sm uppercase tracking-wider">Trusted by Leading Institutions</p>
+            <div class="flex justify-center items-center gap-12 flex-wrap opacity-50">
+                <div class="text-2xl font-bold">🎓 MIT</div>
+                <div class="text-2xl font-bold">🎓 Stanford</div>
+                <div class="text-2xl font-bold">🎓 Harvard</div>
+                <div class="text-2xl font-bold">🎓 NASA</div>
+                <div class="text-2xl font-bold">🎓 Oxford</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-900 relative">
+    <section id="features" class="py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-space text-5xl font-bold mb-4">
+                <h2 class="font-space text-4xl md:text-5xl font-bold mb-4">
                     Supercharge Learning With
-                    <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">AI Power</span>
+                    <span class="gradient-text">AI Power</span>
                 </h2>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto">
                     Every child learns differently. Our AI adapts to their pace, interests, and style.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-hover bg-gradient-to-br from-purple-500/20 to-purple-500/5 p-8 rounded-3xl border border-purple-500/20 reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 glow">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- AI Mentor -->
+                <div class="card-hover card-3d glass p-8 rounded-3xl reveal">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 glow-primary">
                         <i class="fas fa-brain text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">AI Mentor</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <p class="text-gray-400 leading-relaxed mb-4">
                         Personalized learning paths that adapt in real-time. Our AI understands each child's strengths and challenges.
                     </p>
-                    <div class="mt-6 flex items-center text-purple-400 font-semibold">
+                    <div class="flex items-center text-purple-400 font-semibold hover:gap-3 transition-all">
                         Learn more <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-blue-500/20 to-blue-500/5 p-8 rounded-3xl border border-blue-500/20 reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 glow">
+                <!-- Interactive Labs -->
+                <div class="card-hover card-3d glass p-8 rounded-3xl reveal">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 glow-primary">
                         <i class="fas fa-flask text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Interactive Labs</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <p class="text-gray-400 leading-relaxed mb-4">
                         Virtual and physical experiments that bring concepts to life. Safe, fun, and educational.
                     </p>
-                    <div class="mt-6 flex items-center text-blue-400 font-semibold">
+                    <div class="flex items-center text-blue-400 font-semibold hover:gap-3 transition-all">
                         Explore labs <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-green-500/20 to-green-500/5 p-8 rounded-3xl border border-green-500/20 reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 glow">
+                <!-- Gamified Quests -->
+                <div class="card-hover card-3d glass p-8 rounded-3xl reveal">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 glow-primary">
                         <i class="fas fa-gamepad text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Gamified Quests</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <p class="text-gray-400 leading-relaxed mb-4">
                         Earn badges, unlock achievements, and compete with friends. Learning has never been this exciting.
                     </p>
-                    <div class="mt-6 flex items-center text-green-400 font-semibold">
+                    <div class="flex items-center text-green-400 font-semibold hover:gap-3 transition-all">
                         Start playing <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-orange-500/20 to-orange-500/5 p-8 rounded-3xl border border-orange-500/20 reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 glow">
-                        <i class="fas fa-users text-3xl"></i>
+                <!-- Parent Dashboard -->
+                <div class="card-hover card-3d glass p-8 rounded-3xl reveal">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 glow-primary">
+                        <i class="fas fa-chart-line text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Parent Dashboard</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <p class="text-gray-400 leading-relaxed mb-4">
                         Track progress, celebrate milestones, and get insights into your child's learning journey.
                     </p>
-                    <div class="mt-6 flex items-center text-orange-400 font-semibold">
+                    <div class="flex items-center text-orange-400 font-semibold hover:gap-3 transition-all">
                         View dashboard <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-pink-500/20 to-pink-500/5 p-8 rounded-3xl border border-pink-500/20 reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6 glow">
+                <!-- Certificates -->
+                <div class="card-hover card-3d glass p-8 rounded-3xl reveal">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6 glow-primary">
                         <i class="fas fa-certificate text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Certificates</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <p class="text-gray-400 leading-relaxed mb-4">
                         Earn official certificates as you master topics. Build a portfolio of achievements.
                     </p>
-                    <div class="mt-6 flex items-center text-pink-400 font-semibold">
+                    <div class="flex items-center text-pink-400 font-semibold hover:gap-3 transition-all">
                         See examples <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-indigo-500/20 to-indigo-500/5 p-8 rounded-3xl border border-indigo-500/20 reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6 glow">
+                <!-- Global Community -->
+                <div class="card-hover card-3d glass p-8 rounded-3xl reveal">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6 glow-primary">
                         <i class="fas fa-globe text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Global Community</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <p class="text-gray-400 leading-relaxed mb-4">
                         Connect with young scientists worldwide. Share discoveries and collaborate on projects.
                     </p>
-                    <div class="mt-6 flex items-center text-indigo-400 font-semibold">
+                    <div class="flex items-center text-indigo-400 font-semibold hover:gap-3 transition-all">
                         Join community <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </div>
@@ -308,254 +555,312 @@
     </section>
 
     <!-- Adventures Section -->
-    <section id="adventures" class="py-20 gradient-bg relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="adventures" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-space text-5xl font-bold mb-4">Epic Science Adventures</h2>
-                <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                <h2 class="font-space text-4xl md:text-5xl font-bold mb-4">Epic Science Adventures</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                     From space exploration to ocean depths, every quest is an adventure.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mission Mars -->
                 <div class="card-hover glass p-6 rounded-3xl reveal">
-                    <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400&h=300&fit=crop" 
-                         alt="Space" class="w-full h-48 object-cover rounded-2xl mb-4">
-                    <div class="flex items-center justify-between mb-2">
+                    <div class="relative overflow-hidden rounded-2xl mb-4">
+                        <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400&h=300&fit=crop" 
+                             alt="Space" class="w-full h-48 object-cover transform hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full text-sm">
+                            <i class="fas fa-clock mr-1"></i> 2h 30m
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
                         <span class="px-3 py-1 bg-purple-500/30 rounded-full text-sm font-semibold">Space</span>
-                        <span class="text-yellow-400">★ 4.9</span>
+                        <span class="text-yellow-400 text-sm">★ 4.9 (2.3k)</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-2">Mission Mars</h3>
-                    <p class="text-white/80 mb-4">Build a rover, calculate trajectories, and explore the Red Planet.</p>
-                    <button class="w-full bg-white/20 hover:bg-white/30 py-3 rounded-xl font-semibold transition">
-                        Launch Mission
+                    <p class="text-gray-400 mb-4 text-sm">Build a rover, calculate trajectories, and explore the Red Planet.</p>
+                    <button class="w-full glass hover:bg-white/20 py-3 rounded-xl font-semibold transition magnetic">
+                        Launch Mission <i class="fas fa-rocket ml-2"></i>
                     </button>
                 </div>
 
+                <!-- Deep Sea Quest -->
                 <div class="card-hover glass p-6 rounded-3xl reveal">
-                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" 
-                         alt="Ocean" class="w-full h-48 object-cover rounded-2xl mb-4">
-                    <div class="flex items-center justify-between mb-2">
+                    <div class="relative overflow-hidden rounded-2xl mb-4">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" 
+                             alt="Ocean" class="w-full h-48 object-cover transform hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full text-sm">
+                            <i class="fas fa-clock mr-1"></i> 1h 45m
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
                         <span class="px-3 py-1 bg-blue-500/30 rounded-full text-sm font-semibold">Ocean</span>
-                        <span class="text-yellow-400">★ 4.8</span>
+                        <span class="text-yellow-400 text-sm">★ 4.8 (1.9k)</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-2">Deep Sea Quest</h3>
-                    <p class="text-white/80 mb-4">Discover marine life, understand ecosystems, and protect oceans.</p>
-                    <button class="w-full bg-white/20 hover:bg-white/30 py-3 rounded-xl font-semibold transition">
-                        Dive In
+                    <p class="text-gray-400 mb-4 text-sm">Discover marine life, understand ecosystems, and protect oceans.</p>
+                    <button class="w-full glass hover:bg-white/20 py-3 rounded-xl font-semibold transition magnetic">
+                        Dive In <i class="fas fa-water ml-2"></i>
                     </button>
                 </div>
 
+                <!-- Potion Master -->
                 <div class="card-hover glass p-6 rounded-3xl reveal">
-                    <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=400&h=300&fit=crop" 
-                         alt="Chemistry" class="w-full h-48 object-cover rounded-2xl mb-4">
-                    <div class="flex items-center justify-between mb-2">
+                    <div class="relative overflow-hidden rounded-2xl mb-4">
+                        <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=400&h=300&fit=crop" 
+                             alt="Chemistry" class="w-full h-48 object-cover transform hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full text-sm">
+                            <i class="fas fa-clock mr-1"></i> 3h 15m
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
                         <span class="px-3 py-1 bg-green-500/30 rounded-full text-sm font-semibold">Chemistry</span>
-                        <span class="text-yellow-400">★ 5.0</span>
+                        <span class="text-yellow-400 text-sm">★ 5.0 (3.1k)</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-2">Potion Master</h3>
-                    <p class="text-white/80 mb-4">Mix elements, create reactions, and master molecular magic.</p>
-                    <button class="w-full bg-white/20 hover:bg-white/30 py-3 rounded-xl font-semibold transition">
-                        Start Mixing
+                    <p class="text-gray-400 mb-4 text-sm">Mix elements, create reactions, and master molecular magic.</p>
+                    <button class="w-full glass hover:bg-white/20 py-3 rounded-xl font-semibold transition magnetic">
+                        Start Mixing <i class="fas fa-flask ml-2"></i>
                     </button>
                 </div>
+            </div>
+
+            <div class="text-center mt-12 reveal">
+                <button class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg magnetic">
+                    Explore All 500+ Adventures <i class="fas fa-arrow-right ml-2"></i>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="py-20 bg-gray-900">
+    <section id="testimonials" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-space text-5xl font-bold mb-4">Loved by Families Worldwide</h2>
-                <p class="text-xl text-gray-400">See what parents and kids are saying</p>
+                <h2 class="font-space text-4xl md:text-5xl font-bold mb-4">Loved by Families Worldwide</h2>
+                <p class="text-xl text-gray-400">Real stories from real families</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-hover bg-gradient-to-br from-purple-500/10 to-transparent p-8 rounded-3xl border border-purple-500/20 reveal">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/150?img=1" class="w-12 h-12 rounded-full mr-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover glass p-8 rounded-3xl reveal">
+                    <div class="flex items-center mb-6">
+                        <img src="https://i.pravatar.cc/150?img=1" class="w-14 h-14 rounded-full mr-4">
                         <div>
-                            <div class="font-bold">Sarah Johnson</div>
-                            <div class="text-sm text-gray-400">Parent of 2</div>
+                            <div class="font-bold text-lg">Sarah Johnson</div>
+                            <div class="text-sm text-gray-400">Parent of 2 kids</div>
                         </div>
                     </div>
-                    <div class="text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-300">"My kids are OBSESSED! They used to hate homework, now they're begging to do science experiments. This platform is magic."</p>
+                    <div class="text-yellow-400 mb-4 text-lg">★★★★★</div>
+                    <p class="text-gray-300 leading-relaxed">
+                        "My kids are OBSESSED! They used to hate homework, now they're begging to do science experiments. This platform is pure magic."
+                    </p>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-blue-500/10 to-transparent p-8 rounded-3xl border border-blue-500/20 reveal">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/150?img=5" class="w-12 h-12 rounded-full mr-4">
+                <div class="card-hover glass p-8 rounded-3xl reveal">
+                    <div class="flex items-center mb-6">
+                        <img src="https://i.pravatar.cc/150?img=5" class="w-14 h-14 rounded-full mr-4">
                         <div>
-                            <div class="font-bold">Michael Chen</div>
-                            <div class="text-sm text-gray-400">Educator</div>
+                            <div class="font-bold text-lg">Michael Chen</div>
+                            <div class="text-sm text-gray-400">Science Educator</div>
                         </div>
                     </div>
-                    <div class="text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-300">"I use this with my entire class. The engagement is incredible. Students are learning 3x faster with better retention."</p>
+                    <div class="text-yellow-400 mb-4 text-lg">★★★★★</div>
+                    <p class="text-gray-300 leading-relaxed">
+                        "I use this with my entire class. The engagement is incredible. Students are learning 3x faster with better retention."
+                    </p>
                 </div>
 
-                <div class="card-hover bg-gradient-to-br from-green-500/10 to-transparent p-8 rounded-3xl border border-green-500/20 reveal">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/150?img=9" class="w-12 h-12 rounded-full mr-4">
+                <div class="card-hover glass p-8 rounded-3xl reveal">
+                    <div class="flex items-center mb-6">
+                        <img src="https://i.pravatar.cc/150?img=9" class="w-14 h-14 rounded-full mr-4">
                         <div>
-                            <div class="font-bold">Emily Rodriguez</div>
-                            <div class="text-sm text-gray-400">Parent & Scientist</div>
+                            <div class="font-bold text-lg">Emily Rodriguez</div>
+                            <div class="text-sm text-gray-400">Parent & Researcher</div>
                         </div>
                     </div>
-                    <div class="text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-300">"As a researcher, I'm impressed by the scientific accuracy. As a mom, I'm thrilled my daughter loves learning!"</p>
+                    <div class="text-yellow-400 mb-4 text-lg">★★★★★</div>
+                    <p class="text-gray-300 leading-relaxed">
+                        "As a researcher, I'm impressed by the scientific accuracy. As a mom, I'm thrilled my daughter loves learning!"
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-space text-5xl font-bold mb-4">Choose Your Adventure</h2>
-                <p class="text-xl text-white/90">Flexible plans for every family</p>
+                <h2 class="font-space text-4xl md:text-5xl font-bold mb-4">Choose Your Adventure</h2>
+                <p class="text-xl text-gray-300">Flexible plans for every family</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Explorer Plan -->
                 <div class="card-hover glass p-8 rounded-3xl reveal">
-                    <div class="text-3xl mb-4">🌟</div>
+                    <div class="text-4xl mb-4">🌟</div>
                     <h3 class="text-2xl font-bold mb-2">Explorer</h3>
-                    <div class="text-4xl font-bold mb-4">$9<span class="text-lg text-white/70">/mo</span></div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>50+ Interactive Adventures</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Basic AI Mentor</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Progress Tracking</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Community Access</span>
-                        </li>
-                    </ul>
-                    <button class="w-full bg-white/20 hover:bg-white/30 py-4 rounded-xl font-semibold transition">
-                        Start Free Trial
-                    </button>
-                </div>
-
-                <div class="card-hover glass p-8 rounded-3xl reveal border-2 border-yellow-400 relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
-                        MOST POPULAR
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold">$9</span>
+                        <span class="text-gray-400">/month</span>
                     </div>
-                    <div class="text-3xl mb-4">🚀</div>
-                    <h3 class="text-2xl font-bold mb-2">Pioneer</h3>
-                    <div class="text-4xl font-bold mb-4">$19<span class="text-lg text-white/70">/mo</span></div>
-                    <ul class="space-y-3 mb-8">
+                    <ul class="space-y-4 mb-8">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Unlimited Adventures</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">50+ Interactive Adventures</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Advanced AI Mentor</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Basic AI Mentor</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Live Lab Sessions</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Progress Tracking</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Certificates & Badges</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Up to 3 Kids</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Community Access</span>
                         </li>
                     </ul>
-                    <button class="w-full bg-white text-purple-600 py-4 rounded-xl font-bold transition hover:scale-105 shadow-2xl">
+                    <button class="w-full glass hover:bg-white/20 py-4 rounded-xl font-semibold transition magnetic">
                         Start Free Trial
                     </button>
                 </div>
 
-                <div class="card-hover glass p-8 rounded-3xl reveal">
-                    <div class="text-3xl mb-4">👨‍👩‍👧‍👦</div>
-                    <h3 class="text-2xl font-bold mb-2">Family</h3>
-                    <div class="text-4xl font-bold mb-4">$29<span class="text-lg text-white/70">/mo</span></div>
-                    <ul class="space-y-3 mb-8">
+                <!-- Pioneer Plan (Popular) -->
+                <div class="card-hover glass p-8 rounded-3xl reveal border-2 border-yellow-400 relative transform scale-105">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-4 py-1 rounded-full text-sm font-bold">
+                        ⭐ MOST POPULAR
+                    </div>
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-bold mb-2">Pioneer</h3>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold">$19</span>
+                        <span class="text-gray-400">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Everything in Pioneer</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Unlimited Adventures</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Unlimited Kids</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Advanced AI Mentor</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Priority Support</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Live Lab Sessions</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Exclusive Content</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Certificates & Badges</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-2 mt-1"></i>
-                            <span>Parent Workshops</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Up to 3 Kids</span>
                         </li>
                     </ul>
-                    <button class="w-full bg-white/20 hover:bg-white/30 py-4 rounded-xl font-semibold transition">
+                    <button class="w-full bg-white text-purple-600 py-4 rounded-xl font-bold hover:scale-105 transition magnetic">
+                        Start Free Trial
+                    </button>
+                </div>
+
+                <!-- Family Plan -->
+                <div class="card-hover glass p-8 rounded-3xl reveal">
+                    <div class="text-4xl mb-4">👨‍👩‍👧‍👦</div>
+                    <h3 class="text-2xl font-bold mb-2">Family</h3>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold">$29</span>
+                        <span class="text-gray-400">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Everything in Pioneer</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Unlimited Kids</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Priority Support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Exclusive Content</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Parent Workshops</span>
+                        </li>
+                    </ul>
+                    <button class="w-full glass hover:bg-white/20 py-4 rounded-xl font-semibold transition magnetic">
                         Start Free Trial
                     </button>
                 </div>
             </div>
+
+            <p class="text-center text-gray-400 mt-12 reveal">
+                💳 14-day free trial • Cancel anytime • Money-back guarantee
+            </p>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gray-900">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 reveal">
-            <h2 class="font-space text-5xl font-bold mb-6">
-                Ready to Ignite
-                <span class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Curiosity?</span>
-            </h2>
-            <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                Join thousands of families making science fun. Start your free 14-day trial today—no credit card required.
-            </p>
-            <button class="bg-gradient-to-r from-purple-500 to-pink-500 px-12 py-5 rounded-xl font-bold text-xl hover:scale-105 transition glow">
-                Start Free Trial Now
-            </button>
-            <p class="text-sm text-gray-500 mt-4">Cancel anytime. Money-back guarantee.</p>
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto text-center px-4 reveal">
+            <div class="glass p-12 rounded-3xl">
+                <h2 class="font-space text-4xl md:text-5xl font-bold mb-6">
+                    Ready to Ignite
+                    <span class="gradient-text">Curiosity?</span>
+                </h2>
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Join thousands of families making science fun. Start your free 14-day trial today—no credit card required.
+                </p>
+                <button class="btn-primary px-12 py-5 rounded-xl font-bold text-xl magnetic">
+                    Start Free Trial Now <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+                <div class="flex items-center justify-center gap-6 mt-8 text-sm text-gray-400">
+                    <span>✓ No credit card required</span>
+                    <span>•</span>
+                    <span>✓ Cancel anytime</span>
+                    <span>•</span>
+                    <span>✓ 14-day free trial</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-12">
+    <footer class="border-t border-white/10 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-rocket text-xl"></i>
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-atom text-xl"></i>
                         </div>
                         <span class="font-space text-xl font-bold">SciQuest</span>
                     </div>
-                    <p class="text-gray-400 text-sm">Making science education accessible and exciting for every child.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Making science education accessible and exciting for every child.
+                    </p>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Product</h4>
+                    <h4 class="font-bold mb-4 text-lg">Product</h4>
                     <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-white transition">Features</a></li>
-                        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
                         <li><a href="#" class="hover:text-white transition">Roadmap</a></li>
                         <li><a href="#" class="hover:text-white transition">API</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Company</h4>
+                    <h4 class="font-bold mb-4 text-lg">Company</h4>
                     <ul class="space-y-2 text-gray-400 text-sm">
                         <li><a href="#" class="hover:text-white transition">About</a></li>
                         <li><a href="#" class="hover:text-white transition">Blog</a></li>
@@ -564,51 +869,80 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-purple-500 transition">
+                    <h4 class="font-bold mb-4 text-lg">Connect</h4>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-purple-500 transition icon-interactive">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-purple-500 transition">
+                        <a href="#" class="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-purple-500 transition icon-interactive">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-purple-500 transition">
+                        <a href="#" class="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-purple-500 transition icon-interactive">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-purple-500 transition">
+                        <a href="#" class="w-10 h-10 glass rounded-xl flex items-center justify-center hover:bg-purple-500 transition icon-interactive">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
                 <p>© 2025 SciQuest Heroes. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Terms</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Generate stars
+        // Custom Cursor
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            
+            cursorOutline.animate({
+                left: e.clientX + 'px',
+                top: e.clientY + 'px'
+            }, { duration: 500, fill: 'forwards' });
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Generate Stars
         const starsContainer = document.querySelector('.stars');
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDelay = Math.random() * 4 + 's';
             starsContainer.appendChild(star);
         }
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+        // Generate Particles
+        const particlesContainer = document.querySelector('.particles-container');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particlesContainer.appendChild(particle);
+        }
 
-        // Reveal on scroll
+        // Reveal on Scroll
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             revealElements.forEach(element => {
@@ -619,25 +953,96 @@
                 }
             });
         };
-
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // Navbar scroll effect
-        let lastScroll = 0;
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+
+        // Magnetic Button Effect
+        document.querySelectorAll('.magnetic').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('nav');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                navbar.style.backdropFilter = 'blur(20px)';
-                navbar.style.background = 'rgba(0, 0, 0, 0.8)';
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-strong');
             } else {
-                navbar.style.backdropFilter = 'blur(10px)';
-                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+                navbar.classList.remove('glass-strong');
             }
-            
-            lastScroll = currentScroll;
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-target');
+                const data = +counter.innerText.replace(/[^0-9.]/g, '');
+                
+                const time = value / speed;
+                if (data < value) {
+                    counter.innerText = Math.ceil(data + time);
+                    setTimeout(animate, 1);
+                } else {
+                    if (value >= 1000) {
+                        counter.innerText = (value / 1000).toFixed(1) + 'K+';
+                    } else if (counter.getAttribute('data-target').includes('.')) {
+                        counter.innerText = value;
+                    } else {
+                        counter.innerText = value + '+';
+                    }
+                }
+            };
+            animate();
         });
     </script>
 </body>
