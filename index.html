@@ -25,7 +25,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0f0f1e;
             color: #1e293b;
             overflow-x: hidden;
         }
@@ -38,228 +38,440 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Hero Pattern Background */
-        .hero-pattern {
-            background-color: #667eea;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-        }
-
-        /* Comic Panel Style */
-        .comic-panel {
-            background: white;
-            border: 4px solid #1e293b;
-            border-radius: 16px;
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .comic-panel:hover {
-            transform: translateY(-8px) rotate(-1deg);
-        }
-
-        /* Speech Bubble */
-        .speech-bubble {
+        /* Advanced Gradient Mesh Background */
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             position: relative;
-            background: white;
-            border: 3px solid #1e293b;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        .speech-bubble:after {
+        .hero-gradient::before {
             content: '';
             position: absolute;
-            bottom: -20px;
-            left: 30px;
-            width: 0;
-            height: 0;
-            border: 20px solid transparent;
-            border-top-color: #1e293b;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            animation: float 20s infinite ease-in-out;
         }
 
-        .speech-bubble:before {
+        .hero-gradient::after {
             content: '';
             position: absolute;
-            bottom: -14px;
-            left: 33px;
-            width: 0;
-            height: 0;
-            border: 17px solid transparent;
-            border-top-color: white;
-            z-index: 1;
-        }
-
-        /* Cartoon Button */
-        .btn-cartoon {
-            background: #fbbf24;
-            border: 4px solid #1e293b;
-            border-radius: 50px;
-            padding: 16px 32px;
-            font-weight: 700;
-            font-size: 18px;
-            color: #1e293b;
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
-            cursor: pointer;
-            font-family: 'Fredoka', sans-serif;
-        }
-
-        .btn-cartoon:hover {
-            transform: translateY(-3px);
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
-        }
-
-        .btn-cartoon:active {
-            transform: translateY(2px);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-        }
-
-        /* Avatar Card - Cartoon Style */
-        .avatar-card {
-            background: white;
-            border: 4px solid #1e293b;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            position: relative;
-        }
-
-        .avatar-card:hover {
-            transform: translateY(-12px) rotate(-2deg);
-            box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
-        }
-
-        .avatar-card.selected {
-            background: #fef3c7;
-            border-color: #fbbf24;
-            transform: translateY(-12px) scale(1.05);
-        }
-
-        .avatar-card.selected::before {
-            content: '✓';
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 50px;
-            height: 50px;
-            background: #22c55e;
-            border: 4px solid #1e293b;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: white;
-            font-weight: bold;
-            animation: pop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes pop {
-            0% { transform: scale(0) rotate(-180deg); }
-            100% { transform: scale(1) rotate(0); }
-        }
-
-        /* Character Illustrations */
-        .character-circle {
-            width: 140px;
-            height: 140px;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            border: 5px solid #1e293b;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 70px;
-            margin: 0 auto 16px;
-            box-shadow: 0 8px 0 rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .avatar-card:hover .character-circle {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        /* Badge/Sticker Style */
-        .badge-sticker {
-            background: #fbbf24;
-            border: 3px solid #1e293b;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            bottom: -10px;
-            right: -10px;
-            font-size: 30px;
-            box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
-            animation: float 3s ease-in-out infinite;
+            bottom: -150px;
+            right: -100px;
+            animation: float 15s infinite ease-in-out reverse;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(100px, -100px) scale(1.1); }
+            66% { transform: translate(-100px, 100px) scale(0.9); }
         }
 
-        /* Section Styling */
-        .section-white {
-            background: white;
+        /* 3D Avatar Card with Glassmorphism */
+        .avatar-3d-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 32px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.3),
+                0 5px 15px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
-        .section-white::before {
+        .avatar-3d-card::before {
             content: '';
             position: absolute;
-            top: -30px;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: white;
-            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+            inset: 0;
+            border-radius: 30px;
+            padding: 2px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.4), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
-        /* Feature Box */
-        .feature-box {
+        .avatar-3d-card:hover {
+            transform: translateY(-20px) rotateX(10deg);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.4),
+                0 10px 30px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .avatar-3d-card.selected {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(245, 158, 11, 0.3));
+            border: 3px solid #fbbf24;
+            transform: translateY(-25px) rotateX(10deg) scale(1.05);
+        }
+
+        .avatar-3d-card.selected::after {
+            content: '✓';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border: 4px solid rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5);
+            animation: checkPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(0) rotate(-180deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+        /* 3D Character Sphere */
+        .character-sphere {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 85px;
+            margin: 0 auto 24px;
+            position: relative;
+            box-shadow: 
+                0 20px 40px rgba(102, 126, 234, 0.4),
+                inset 0 -20px 40px rgba(0,0,0,0.2),
+                inset 0 20px 40px rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .character-sphere::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 50%;
+            height: 30%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+
+        .avatar-3d-card:hover .character-sphere {
+            transform: scale(1.1) rotateY(15deg);
+            box-shadow: 
+                0 25px 50px rgba(102, 126, 234, 0.6),
+                inset 0 -20px 40px rgba(0,0,0,0.3),
+                inset 0 20px 40px rgba(255,255,255,0.3);
+        }
+
+        /* Specialty Badge 3D */
+        .specialty-badge-3d {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border: 4px solid rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 
+                0 10px 30px rgba(251, 191, 36, 0.5),
+                inset 0 -5px 10px rgba(0,0,0,0.2),
+                inset 0 5px 10px rgba(255,255,255,0.3);
+            animation: pulse 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        /* 3D Comic Panel */
+        .comic-panel-3d {
             background: white;
-            border: 4px solid #1e293b;
+            border: 5px solid #1e293b;
             border-radius: 20px;
-            padding: 32px;
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            padding: 24px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                10px 10px 0 rgba(30, 41, 59, 0.3),
+                15px 15px 30px rgba(0,0,0,0.2);
+            transform-style: preserve-3d;
         }
 
-        .feature-box:hover {
+        .comic-panel-3d:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
+            box-shadow: 
+                15px 15px 0 rgba(30, 41, 59, 0.4),
+                20px 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Cartoon Button 3D */
+        .btn-3d {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border: 4px solid #1e293b;
+            border-radius: 60px;
+            padding: 20px 40px;
+            font-weight: 800;
+            font-size: 20px;
+            color: #1e293b;
+            box-shadow: 
+                0 8px 0 #92400e,
+                0 12px 30px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: 'Fredoka', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-3d:hover::before {
+            left: 100%;
+        }
+
+        .btn-3d:hover {
             transform: translateY(-5px);
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
+            box-shadow: 
+                0 13px 0 #92400e,
+                0 17px 40px rgba(0,0,0,0.4);
         }
 
-        /* Stars Background */
-        .stars {
+        .btn-3d:active {
+            transform: translateY(4px);
+            box-shadow: 
+                0 4px 0 #92400e,
+                0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Particle System */
+        .particles {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
+            pointer-events: none;
         }
 
-        .star {
+        .particle {
             position: absolute;
             width: 4px;
             height: 4px;
-            background: white;
+            background: rgba(255,255,255,0.6);
             border-radius: 50%;
-            animation: twinkle 3s infinite;
-            opacity: 0.7;
+            animation: particleFloat 15s infinite;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-100vh) translateX(100px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Feature Icon 3D */
+        .feature-icon-3d {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            margin: 0 auto 24px;
+            box-shadow: 
+                0 15px 30px rgba(102, 126, 234, 0.4),
+                inset 0 -5px 10px rgba(0,0,0,0.2),
+                inset 0 5px 10px rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .feature-icon-3d:hover {
+            transform: rotateY(180deg);
+        }
+
+        /* Morphing Blob Background */
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+            75% { border-radius: 60% 40% 60% 40% / 70% 30% 50% 60%; }
+        }
+
+        .blob-bg {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+            animation: morph 20s ease-in-out infinite, float 25s ease-in-out infinite;
+            filter: blur(40px);
+        }
+
+        /* Speech Bubble 3D */
+        .speech-bubble-3d {
+            position: relative;
+            background: white;
+            border: 4px solid #1e293b;
+            border-radius: 25px;
+            padding: 24px;
+            box-shadow: 
+                5px 5px 0 rgba(30, 41, 59, 0.3),
+                8px 8px 20px rgba(0,0,0,0.2);
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+
+        .speech-bubble-3d:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                7px 7px 0 rgba(30, 41, 59, 0.4),
+                12px 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .speech-bubble-3d::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 40px;
+            width: 0;
+            height: 0;
+            border: 24px solid transparent;
+            border-top-color: #1e293b;
+        }
+
+        .speech-bubble-3d::before {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 44px;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: white;
+            z-index: 1;
+        }
+
+        /* Parallax Sections */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Premium Card */
+        .premium-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .premium-card:hover::before {
+            left: 100%;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
         }
 
         /* Mobile Menu */
@@ -272,45 +484,39 @@
             transform: translateX(0);
         }
 
-        /* Scroll Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
         }
     </style>
 </head>
 <body>
     
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b-4 border-slate-800 shadow-lg">
+    <nav class="fixed w-full z-50 backdrop-blur-xl bg-white/80 border-b border-white/20 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-3">
-                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center border-4 border-slate-800 shadow-lg">
-                        <span class="text-3xl">📚</span>
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 rounded-3xl flex items-center justify-center border-4 border-white shadow-2xl transform hover:scale-110 transition-transform">
+                        <span class="text-4xl">🚀</span>
                     </div>
-                    <span class="font-fredoka text-2xl font-bold text-slate-800">SciQuest Heroes</span>
+                    <span class="font-fredoka text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">SciQuest Heroes</span>
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-6">
-                    <a href="#how-it-works" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-semibold">How It Works</a>
-                    <a href="#avatars" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-semibold">Choose Avatar</a>
-                    <a href="#topics" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-semibold">Topics</a>
-                    <a href="#for-parents" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-semibold">For Parents</a>
-                    <button class="btn-cartoon">
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#how-it-works" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-bold text-lg">How It Works</a>
+                    <a href="#avatars" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-bold text-lg">Choose Avatar</a>
+                    <a href="#topics" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-bold text-lg">Topics</a>
+                    <a href="#for-parents" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-bold text-lg">For Parents</a>
+                    <button class="btn-3d">
                         Start Free Trial
                     </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="lg:hidden border-4 border-slate-800 p-2 rounded-xl bg-yellow-400" onclick="toggleMobileMenu()">
+                <button class="lg:hidden border-4 border-slate-800 p-3 rounded-2xl bg-yellow-400 shadow-lg hover:scale-110 transition-transform" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-2xl text-slate-800"></i>
                 </button>
             </div>
@@ -318,490 +524,528 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white border-l-4 border-slate-800 z-50 p-8 lg:hidden" id="mobileMenu">
-        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl text-slate-800">
+    <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl border-l-4 border-slate-800 z-50 p-8 lg:hidden shadow-2xl" id="mobileMenu">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-4xl text-slate-800 hover:scale-110 transition-transform">
             <i class="fas fa-times"></i>
         </button>
-        <div class="flex flex-col space-y-6 mt-16 font-fredoka text-xl font-bold">
-            <a href="#how-it-works" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600">How It Works</a>
-            <a href="#avatars" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600">Choose Avatar</a>
-            <a href="#topics" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600">Topics</a>
-            <a href="#for-parents" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600">For Parents</a>
-            <button class="btn-cartoon mt-4">Start Free Trial</button>
+        <div class="flex flex-col space-y-8 mt-20 font-fredoka text-xl font-bold">
+            <a href="#how-it-works" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600 transition">How It Works</a>
+            <a href="#avatars" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600 transition">Choose Avatar</a>
+            <a href="#topics" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600 transition">Topics</a>
+            <a href="#for-parents" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-purple-600 transition">For Parents</a>
+            <button class="btn-3d w-full mt-4">Start Free Trial</button>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-pattern min-h-screen flex items-center relative overflow-hidden pt-24 pb-16">
-        <div class="stars"></div>
+    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-32 pb-20">
+        <div class="particles"></div>
+        <div class="blob-bg" style="top: 10%; left: 5%;"></div>
+        <div class="blob-bg" style="bottom: 10%; right: 5%; animation-delay: -10s;"></div>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12">
-                <div class="inline-block bg-yellow-400 border-4 border-slate-800 rounded-full px-6 py-2 mb-6 shadow-lg">
-                    <span class="font-fredoka font-bold text-slate-800 text-lg">🎉 Voice-Narrated Science Comics!</span>
+            <div class="text-center mb-16">
+                <div class="inline-block glass-card px-8 py-3 mb-8 animate-bounce">
+                    <span class="font-fredoka font-bold text-white text-xl">🎉 AI-Powered Voice Comics for Kids!</span>
                 </div>
                 
-                <h1 class="font-fredoka text-5xl md:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
+                <h1 class="font-fredoka text-6xl md:text-8xl font-black text-white leading-tight mb-8 drop-shadow-2xl">
                     Your Child Becomes<br>
-                    <span class="text-yellow-300">The Hero</span> of<br>
-                    Science Stories!
+                    <span class="bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent animate-pulse">The Hero</span><br>
+                    of Science Stories!
                 </h1>
                 
-                <p class="text-2xl md:text-3xl text-white/90 mb-8 max-w-3xl mx-auto font-medium leading-relaxed">
-                    AI-powered personalized comics where kids star alongside science guides like <span class="text-yellow-300 font-bold">Mr. Chloro</span> in epic learning adventures!
+                <p class="text-3xl md:text-4xl text-white font-bold mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
+                    Personalized 6-panel comics where <span class="text-yellow-300">YOUR CHILD</span> stars with science guides like <span class="text-pink-300">Mr. Chloro</span>!
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                    <button class="btn-cartoon text-xl">
-                        <i class="fas fa-rocket mr-2"></i>Start Your Story Free
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                    <button class="btn-3d text-2xl transform hover:scale-105">
+                        <i class="fas fa-rocket mr-3"></i>Create My Story FREE
                     </button>
-                    <button class="bg-white border-4 border-slate-800 rounded-full px-8 py-4 font-fredoka font-bold text-slate-800 text-lg shadow-lg hover:bg-yellow-50 transition">
-                        <i class="fas fa-play-circle mr-2"></i>Watch Demo
+                    <button class="glass-card px-10 py-5 font-fredoka font-bold text-white text-xl hover:bg-white/20 transition">
+                        <i class="fas fa-play-circle mr-3"></i>Watch Magic
                     </button>
                 </div>
 
-                <div class="flex items-center justify-center gap-8 text-white flex-wrap">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-star text-yellow-300 text-2xl"></i>
-                        <span class="font-fredoka font-bold text-lg">Ages 5-12</span>
+                <div class="flex items-center justify-center gap-12 text-white flex-wrap">
+                    <div class="glass-card px-6 py-3 flex items-center gap-3">
+                        <i class="fas fa-star text-yellow-300 text-3xl"></i>
+                        <span class="font-fredoka font-bold text-xl">Ages 5-12</span>
                     </div>
-                    <div class="w-px h-8 bg-white/30"></div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-shield-alt text-yellow-300 text-2xl"></i>
-                        <span class="font-fredoka font-bold text-lg">COPPA Safe</span>
+                    <div class="glass-card px-6 py-3 flex items-center gap-3">
+                        <i class="fas fa-shield-alt text-green-300 text-3xl"></i>
+                        <span class="font-fredoka font-bold text-xl">100% Safe</span>
                     </div>
-                    <div class="w-px h-8 bg-white/30"></div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-headphones text-yellow-300 text-2xl"></i>
-                        <span class="font-fredoka font-bold text-lg">Voice Narrated</span>
+                    <div class="glass-card px-6 py-3 flex items-center gap-3">
+                        <i class="fas fa-headphones text-pink-300 text-3xl"></i>
+                        <span class="font-fredoka font-bold text-xl">Voice AI</span>
                     </div>
                 </div>
             </div>
 
             <!-- Sample Comic Preview -->
-            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto reveal">
-                <div class="comic-panel p-6">
-                    <div class="text-6xl text-center mb-4">🌱</div>
-                    <div class="speech-bubble mb-12">
-                        <p class="font-fredoka font-bold text-slate-800 text-lg">"Hi there! I'm Mr. Chloro, and I know the secret about plants!"</p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto reveal">
+                <div class="comic-panel-3d">
+                    <div class="text-8xl text-center mb-6">🌿</div>
+                    <div class="speech-bubble-3d mb-16">
+                        <p class="font-fredoka font-bold text-slate-800 text-xl leading-relaxed">"Hi! I'm Mr. Chloro, and plants have MAGICAL powers!"</p>
                     </div>
-                    <p class="text-center font-fredoka font-semibold text-slate-600">Panel 1</p>
+                    <p class="text-center font-fredoka font-black text-slate-600 text-lg">🎬 Panel 1</p>
                 </div>
 
-                <div class="comic-panel p-6">
-                    <div class="text-6xl text-center mb-4">👧☀️</div>
-                    <div class="speech-bubble mb-12">
-                        <p class="font-fredoka font-bold text-slate-800 text-lg">"Wow! So plants eat sunlight? That's amazing!"</p>
+                <div class="comic-panel-3d">
+                    <div class="text-8xl text-center mb-6">👧✨</div>
+                    <div class="speech-bubble-3d mb-16">
+                        <p class="font-fredoka font-bold text-slate-800 text-xl leading-relaxed">"Wow! You mean plants can EAT SUNLIGHT?!"</p>
                     </div>
-                    <p class="text-center font-fredoka font-semibold text-slate-600">Panel 2</p>
+                    <p class="text-center font-fredoka font-black text-slate-600 text-lg">🎬 Panel 2</p>
                 </div>
 
-                <div class="comic-panel p-6">
-                    <div class="text-6xl text-center mb-4">⚗️✨</div>
-                    <div class="speech-bubble mb-12">
-                        <p class="font-fredoka font-bold text-slate-800 text-lg">"Sunlight + water + air = my secret recipe!"</p>
+                <div class="comic-panel-3d">
+                    <div class="text-8xl text-center mb-6">☀️💧🍃</div>
+                    <div class="speech-bubble-3d mb-16">
+                        <p class="font-fredoka font-bold text-slate-800 text-xl leading-relaxed">"Sun + Water + Air = My SECRET RECIPE!"</p>
                     </div>
-                    <p class="text-center font-fredoka font-semibold text-slate-600">Panel 3</p>
+                    <p class="text-center font-fredoka font-black text-slate-600 text-lg">🎬 Panel 3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Avatar Selection -->
+    <section id="avatars" class="relative py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"></div>
+        <div class="particles"></div>
+        <div class="blob-bg" style="top: 20%; right: 10%;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <div class="inline-block glass-card px-8 py-4 mb-8">
+                    <span class="font-fredoka font-black text-white text-2xl">✨ CHOOSE YOUR HERO AVATAR ✨</span>
+                </div>
+                <h2 class="font-fredoka text-6xl md:text-7xl font-black text-white mb-8 drop-shadow-2xl">
+                    Pick Your<br>
+                    <span class="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Adventure Buddy</span>
+                </h2>
+                <p class="text-3xl text-white font-bold max-w-4xl mx-auto leading-relaxed">
+                    Every hero needs an awesome avatar! Which one is YOU?
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-16">
+                <!-- Avatar 1 - Aria the Scientist -->
+                <div class="avatar-3d-card" onclick="selectAvatar(this, 'Aria', 'Science Explorer', '👧🔬')">
+                    <div class="character-sphere">
+                        <span>👧</span>
+                    </div>
+                    <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Aria</h4>
+                    <p class="font-fredoka text-white/80 font-bold text-center text-lg">Science Explorer</p>
+                    <div class="specialty-badge-3d">🔬</div>
+                </div>
+
+                <!-- Avatar 2 - Zion the Astronaut -->
+                <div class="avatar-3d-card" onclick="selectAvatar(this, 'Zion', 'Space Captain', '👦🚀')">
+                    <div class="character-sphere">
+                        <span>👦</span>
+                    </div>
+                    <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Zion</h4>
+                    <p class="font-fredoka text-white/80 font-bold text-center text-lg">Space Captain</p>
+                    <div class="specialty-badge-3d">🚀</div>
+                </div>
+
+                <!-- Avatar 3 - Luna the Ocean Explorer -->
+                <div class="avatar-3d-card" onclick="selectAvatar(this, 'Luna', 'Ocean Explorer', '👧🌊')">
+                    <div class="character-sphere">
+                        <span>👧</span>
+                    </div>
+                    <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Luna</h4>
+                    <p class="font-fredoka text-white/80 font-bold text-center text-lg">Ocean Explorer</p>
+                    <div class="specialty-badge-3d">🌊</div>
+                </div>
+
+                <!-- Avatar 4 - River the Nature Hero -->
+                <div class="avatar-3d-card" onclick="selectAvatar(this, 'River', 'Nature Hero', '👦🌳')">
+                    <div class="character-sphere">
+                        <span>👦</span>
+                    </div>
+                    <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">River</h4>
+                    <p class="font-fredoka text-white/80 font-bold text-center text-lg">Nature Hero</p>
+                    <div class="specialty-badge-3d">🌱</div>
+                </div>
+
+                <!-- Avatar 5 - Nova the Inventor -->
+                <div class="avatar-3d-card" onclick="selectAvatar(this, 'Nova', 'Super Inventor', '👧⚡')">
+                    <div class="character-sphere">
+                        <span>👧</span>
+                    </div>
+                    <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Nova</h4>
+                    <p class="font-fredoka text-white/80 font-bold text-center text-lg">Super Inventor</p>
+                    <div class="specialty-badge-3d">⚡</div>
+                </div>
+
+                <!-- Avatar 6 - Max the Explorer -->
+                <div class="avatar-3d-card" onclick="selectAvatar(this, 'Max', 'Dino Detective', '👦🦖')">
+                    <div class="character-sphere">
+                        <span>👦</span>
+                    </div>
+                    <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Max</h4>
+                    <p class="font-fredoka text-white/80 font-bold text-center text-lg">Dino Detective</p>
+                    <div class="specialty-badge-3d">🦖</div>
+                </div>
+            </div>
+
+            <div class="text-center reveal">
+                <div id="avatarFeedback" class="premium-card max-w-4xl mx-auto" style="display: none;">
+                    <div class="text-9xl mb-8" id="selectedEmoji">👧</div>
+                    <h3 class="font-fredoka text-6xl font-black text-white mb-6">
+                        AWESOME CHOICE,<br>
+                        <span class="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent" id="selectedName">HERO</span>!
+                    </h3>
+                    <p class="font-fredoka text-3xl text-white/90 font-bold mb-10" id="selectedRole">Explorer</p>
+                    <button class="btn-3d text-2xl">
+                        <i class="fas fa-book-open mr-3"></i>CREATE MY FIRST STORY!
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section id="how-it-works" class="section-white py-20">
+    <section id="how-it-works" class="relative py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-fredoka text-5xl font-bold text-slate-800 mb-4">How It Works</h2>
-                <p class="text-2xl text-slate-600 font-medium">From login to learning in 3 magical steps!</p>
+            <div class="text-center mb-20 reveal">
+                <h2 class="font-fredoka text-6xl font-black text-slate-800 mb-6">How The Magic Works</h2>
+                <p class="text-3xl text-slate-600 font-bold">3 Super Easy Steps to Start!</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="feature-box text-center reveal">
-                    <div class="text-7xl mb-6">👨‍👩‍👧</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-4">1. Parent Setup</h3>
-                    <p class="text-lg text-slate-600 font-medium leading-relaxed">
-                        Create account, add your child, set grade level, and provide consent. You're in full control!
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="premium-card bg-gradient-to-br from-purple-500 to-pink-500 text-center reveal">
+                    <div class="feature-icon-3d">
+                        <span>👨‍👩‍👧</span>
+                    </div>
+                    <h3 class="font-fredoka text-4xl font-black text-white mb-6">1. Parent Setup</h3>
+                    <p class="text-xl text-white font-bold leading-relaxed">
+                        Quick signup, add your child, choose grade level. You control everything!
                     </p>
                 </div>
 
-                <div class="feature-box text-center reveal">
-                    <div class="text-7xl mb-6">🦸‍♀️</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-4">2. Child Chooses Hero</h3>
-                    <p class="text-lg text-slate-600 font-medium leading-relaxed">
-                        Your child picks their avatar and topic. AI generates a personalized 6-panel comic with their name!
+                <div class="premium-card bg-gradient-to-br from-blue-500 to-cyan-500 text-center reveal">
+                    <div class="feature-icon-3d">
+                        <span>🦸‍♀️</span>
+                    </div>
+                    <h3 class="font-fredoka text-4xl font-black text-white mb-6">2. Kid Picks Hero</h3>
+                    <p class="text-xl text-white font-bold leading-relaxed">
+                        Choose avatar & topic. AI creates a custom 6-panel comic with THEIR NAME!
                     </p>
                 </div>
 
-                <div class="feature-box text-center reveal">
-                    <div class="text-7xl mb-6">📖🎧</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-4">3. Read & Learn</h3>
-                    <p class="text-lg text-slate-600 font-medium leading-relaxed">
-                        Voice-narrated story calls their name! Ask questions, chat with guides, earn badges, print comic!
+                <div class="premium-card bg-gradient-to-br from-orange-500 to-red-500 text-center reveal">
+                    <div class="feature-icon-3d">
+                        <span>📖</span>
+                    </div>
+                    <h3 class="font-fredoka text-4xl font-black text-white mb-6">3. Read & Learn</h3>
+                    <p class="text-xl text-white font-bold leading-relaxed">
+                        Voice narration calls their name! Chat, earn badges, print comics!
                     </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Avatar Selection -->
-    <section id="avatars" class="bg-gradient-to-br from-purple-500 to-pink-500 py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <div class="inline-block bg-yellow-400 border-4 border-slate-800 rounded-full px-6 py-2 mb-6">
-                    <span class="font-fredoka font-bold text-slate-800 text-lg">✨ Choose Your Hero!</span>
-                </div>
-                <h2 class="font-fredoka text-5xl md:text-6xl font-bold text-white mb-6">
-                    Pick Your Adventure Buddy
-                </h2>
-                <p class="text-2xl text-white/90 max-w-3xl mx-auto font-medium">
-                    Every hero needs a cool avatar! Which one matches your personality?
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-12">
-                <!-- Avatar 1 - Scientist -->
-                <div class="avatar-card" onclick="selectAvatar(this, 'Aria', 'Science Explorer')">
-                    <div class="character-circle">
-                        <span>👧🔬</span>
-                    </div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 text-center mb-1">Aria</h4>
-                    <p class="font-fredoka text-slate-600 font-semibold text-center">Science Explorer</p>
-                    <div class="badge-sticker">🔬</div>
-                </div>
-
-                <!-- Avatar 2 - Astronaut -->
-                <div class="avatar-card" onclick="selectAvatar(this, 'Zion', 'Space Hero')">
-                    <div class="character-circle">
-                        <span>👦🚀</span>
-                    </div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 text-center mb-1">Zion</h4>
-                    <p class="font-fredoka text-slate-600 font-semibold text-center">Space Hero</p>
-                    <div class="badge-sticker">🚀</div>
-                </div>
-
-                <!-- Avatar 3 - Ocean Explorer -->
-                <div class="avatar-card" onclick="selectAvatar(this, 'Luna', 'Ocean Explorer')">
-                    <div class="character-circle">
-                        <span>👧🌊</span>
-                    </div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 text-center mb-1">Luna</h4>
-                    <p class="font-fredoka text-slate-600 font-semibold text-center">Ocean Explorer</p>
-                    <div class="badge-sticker">🌊</div>
-                </div>
-
-                <!-- Avatar 4 - Nature Hero -->
-                <div class="avatar-card" onclick="selectAvatar(this, 'River', 'Nature Hero')">
-                    <div class="character-circle">
-                        <span>👦🌳</span>
-                    </div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 text-center mb-1">River</h4>
-                    <p class="font-fredoka text-slate-600 font-semibold text-center">Nature Hero</p>
-                    <div class="badge-sticker">🌱</div>
-                </div>
-            </div>
-
-            <div class="text-center reveal">
-                <div id="avatarFeedback" class="bg-white border-4 border-slate-800 rounded-3xl p-12 max-w-3xl mx-auto shadow-2xl" style="display: none;">
-                    <div class="text-8xl mb-6" id="selectedEmoji">👧</div>
-                    <h3 class="font-fredoka text-5xl font-bold text-slate-800 mb-4">
-                        Awesome choice, <span class="text-purple-600" id="selectedName">Hero</span>!
-                    </h3>
-                    <p class="font-fredoka text-2xl text-slate-600 font-semibold mb-8" id="selectedRole">Explorer</p>
-                    <button class="btn-cartoon text-xl">
-                        <i class="fas fa-book-open mr-2"></i>Start Your First Story!
-                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Topic Guides -->
-    <section id="topics" class="section-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-fredoka text-5xl font-bold text-slate-800 mb-4">Meet Your Science Guides!</h2>
-                <p class="text-2xl text-slate-600 font-medium">Every topic has a friendly character to teach you!</p>
+    <section id="topics" class="relative py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600"></div>
+        <div class="particles"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <h2 class="font-fredoka text-6xl font-black text-white mb-6 drop-shadow-2xl">Meet Your Science Guides!</h2>
+                <p class="text-3xl text-white font-bold">Friendly characters who make learning FUN!</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="comic-panel p-8 text-center reveal">
-                    <div class="text-8xl mb-4">🌱</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-3">Mr. Chloro</h3>
-                    <p class="font-fredoka text-xl text-purple-600 font-bold mb-4">Photosynthesis Expert</p>
-                    <p class="text-slate-600 font-medium text-lg leading-relaxed">
-                        "I'm a leaf scientist who knows all about how plants make food from sunlight!"
+            <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <div class="comic-panel-3d text-center reveal">
+                    <div class="text-9xl mb-6">🌱</div>
+                    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Mr. Chloro</h3>
+                    <p class="font-fredoka text-2xl text-purple-600 font-black mb-4">Plant Wizard</p>
+                    <p class="text-slate-600 font-bold text-lg leading-relaxed">
+                        "I know how plants eat sunlight! Ready to learn photosynthesis?"
                     </p>
                 </div>
 
-                <div class="comic-panel p-8 text-center reveal">
-                    <div class="text-8xl mb-4">🦖</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-3">Rex the Paleontologist</h3>
-                    <p class="font-fredoka text-xl text-purple-600 font-bold mb-4">Dinosaur Detective</p>
-                    <p class="text-slate-600 font-medium text-lg leading-relaxed">
-                        "Let's dig into the past and discover amazing creatures that ruled Earth!"
+                <div class="comic-panel-3d text-center reveal">
+                    <div class="text-9xl mb-6">🦖</div>
+                    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Rex Explorer</h3>
+                    <p class="font-fredoka text-2xl text-purple-600 font-black mb-4">Dino Detective</p>
+                    <p class="text-slate-600 font-bold text-lg leading-relaxed">
+                        "Let's travel back millions of years and meet REAL dinosaurs!"
                     </p>
                 </div>
 
-                <div class="comic-panel p-8 text-center reveal">
-                    <div class="text-8xl mb-4">🌊</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-3">Captain Aqua</h3>
-                    <p class="font-fredoka text-xl text-purple-600 font-bold mb-4">Ocean Explorer</p>
-                    <p class="text-slate-600 font-medium text-lg leading-relaxed">
-                        "Dive deep with me to explore mysterious ocean ecosystems and sea creatures!"
+                <div class="comic-panel-3d text-center reveal">
+                    <div class="text-9xl mb-6">🌊</div>
+                    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Captain Aqua</h3>
+                    <p class="font-fredoka text-2xl text-purple-600 font-black mb-4">Ocean Hero</p>
+                    <p class="text-slate-600 font-bold text-lg leading-relaxed">
+                        "Dive deep with me to discover mysterious sea creatures!"
                     </p>
                 </div>
             </div>
 
-            <div class="text-center mt-12 reveal">
-                <button class="btn-cartoon text-xl">
-                    Explore All 50+ Topics <i class="fas fa-arrow-right ml-2"></i>
+            <div class="text-center mt-16 reveal">
+                <button class="btn-3d text-2xl">
+                    Explore 50+ Topics <i class="fas fa-arrow-right ml-3"></i>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- For Parents -->
-    <section id="for-parents" class="bg-gradient-to-br from-blue-500 to-cyan-500 py-20">
+    <section id="for-parents" class="relative py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <div class="inline-block bg-white border-4 border-slate-800 rounded-full px-6 py-2 mb-6">
-                    <span class="font-fredoka font-bold text-slate-800 text-lg">🛡️ Safe & Secure</span>
+            <div class="text-center mb-20 reveal">
+                <div class="inline-block glass-card bg-gradient-to-r from-green-500 to-emerald-500 px-8 py-4 mb-8">
+                    <span class="font-fredoka font-black text-white text-2xl">🛡️ 100% SAFE & SECURE</span>
                 </div>
-                <h2 class="font-fredoka text-5xl md:text-6xl font-bold text-white mb-6">
-                    Built for Parents Who Care
+                <h2 class="font-fredoka text-6xl font-black text-slate-800 mb-6">
+                    Built for Parents<br>Who Care
                 </h2>
-                <p class="text-2xl text-white/90 max-w-3xl mx-auto font-medium">
-                    Full control, transparency, and COPPA compliance built-in
+                <p class="text-3xl text-slate-600 font-bold">
+                    Complete control + transparency + COPPA compliant
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="feature-box text-center reveal">
-                    <div class="text-6xl mb-4">🔒</div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 mb-3">COPPA Compliant</h4>
-                    <p class="text-slate-600 font-medium">Full consent controls and data protection for kids under 13</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="premium-card bg-gradient-to-br from-green-400 to-emerald-500 text-center reveal">
+                    <div class="text-7xl mb-6">🔒</div>
+                    <h4 class="font-fredoka text-3xl font-black text-white mb-4">COPPA Safe</h4>
+                    <p class="text-white font-bold text-lg">Full protection for kids under 13</p>
                 </div>
 
-                <div class="feature-box text-center reveal">
-                    <div class="text-6xl mb-4">📊</div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 mb-3">Progress Dashboard</h4>
-                    <p class="text-slate-600 font-medium">Track stories read, questions asked, and learning milestones</p>
+                <div class="premium-card bg-gradient-to-br from-blue-400 to-cyan-500 text-center reveal">
+                    <div class="text-7xl mb-6">📊</div>
+                    <h4 class="font-fredoka text-3xl font-black text-white mb-4">Track Progress</h4>
+                    <p class="text-white font-bold text-lg">See every story & milestone</p>
                 </div>
 
-                <div class="feature-box text-center reveal">
-                    <div class="text-6xl mb-4">🔇</div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 mb-3">Review Chats</h4>
-                    <p class="text-slate-600 font-medium">See all conversations your child has with science guides</p>
+                <div class="premium-card bg-gradient-to-br from-purple-400 to-pink-500 text-center reveal">
+                    <div class="text-7xl mb-6">💬</div>
+                    <h4 class="font-fredoka text-3xl font-black text-white mb-4">Review Chats</h4>
+                    <p class="text-white font-bold text-lg">Monitor all conversations</p>
                 </div>
 
-                <div class="feature-box text-center reveal">
-                    <div class="text-6xl mb-4">🖨️</div>
-                    <h4 class="font-fredoka text-2xl font-bold text-slate-800 mb-3">Print Comics</h4>
-                    <p class="text-slate-600 font-medium">Download PDF versions of every personalized comic story</p>
+                <div class="premium-card bg-gradient-to-br from-orange-400 to-red-500 text-center reveal">
+                    <div class="text-7xl mb-6">🖨️</div>
+                    <h4 class="font-fredoka text-3xl font-black text-white mb-4">Print Comics</h4>
+                    <p class="text-white font-bold text-lg">Download every story PDF</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section class="section-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-fredoka text-5xl font-bold text-slate-800 mb-4">Simple Pricing</h2>
-                <p class="text-2xl text-slate-600 font-medium">Start free, upgrade when ready!</p>
+    <section class="relative py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900"></div>
+        <div class="particles"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <h2 class="font-fredoka text-6xl font-black text-white mb-6 drop-shadow-2xl">Simple Pricing</h2>
+                <p class="text-3xl text-white font-bold">Start FREE, upgrade when ready!</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
                 <!-- Free -->
-                <div class="feature-box text-center reveal">
-                    <div class="text-5xl mb-4">🆓</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-2">Free Trial</h3>
-                    <div class="my-6">
-                        <span class="font-fredoka text-5xl font-bold text-slate-800">$0</span>
-                        <span class="text-slate-600 text-xl">/14 days</span>
+                <div class="comic-panel-3d text-center reveal">
+                    <div class="text-6xl mb-6">🆓</div>
+                    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Free Trial</h3>
+                    <div class="my-8">
+                        <span class="font-fredoka text-6xl font-black text-slate-800">$0</span>
+                        <span class="text-slate-600 text-2xl font-bold">/14 days</span>
                     </div>
-                    <ul class="text-left space-y-3 mb-8">
+                    <ul class="text-left space-y-4 mb-10">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">3 Free Stories</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">3 Free Stories</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Voice Narration</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">Voice Narration</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Basic Q&A Chat</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">Basic Chat</span>
                         </li>
                     </ul>
-                    <button class="btn-cartoon w-full">Start Free</button>
+                    <button class="btn-3d w-full">START FREE</button>
                 </div>
 
-                <!-- Monthly -->
-                <div class="feature-box text-center reveal border-yellow-400 border-8 relative">
-                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-yellow-400 border-4 border-slate-800 rounded-full px-4 py-1">
-                        <span class="font-fredoka font-bold text-slate-800">⭐ POPULAR</span>
+                <!-- Monthly - Popular -->
+                <div class="comic-panel-3d text-center reveal border-yellow-400 border-8 relative transform scale-110">
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-yellow-400 border-4 border-slate-800 rounded-full px-6 py-2 shadow-2xl">
+                        <span class="font-fredoka font-black text-slate-800 text-lg">⭐ BEST VALUE</span>
                     </div>
-                    <div class="text-5xl mb-4 mt-4">🚀</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-2">Monthly</h3>
-                    <div class="my-6">
-                        <span class="font-fredoka text-5xl font-bold text-slate-800">$19</span>
-                        <span class="text-slate-600 text-xl">/month</span>
+                    <div class="text-6xl mb-6 mt-6">🚀</div>
+                    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Monthly</h3>
+                    <div class="my-8">
+                        <span class="font-fredoka text-6xl font-black text-slate-800">$19</span>
+                        <span class="text-slate-600 text-2xl font-bold">/month</span>
                     </div>
-                    <ul class="text-left space-y-3 mb-8">
+                    <ul class="text-left space-y-4 mb-10">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Unlimited Stories</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">UNLIMITED Stories</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">All Topic Guides</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">ALL Topics</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Advanced Chat</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">Advanced Chat</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">PDF Downloads</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">PDF Downloads</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Up to 3 Kids</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">Up to 3 Kids</span>
                         </li>
                     </ul>
-                    <button class="btn-cartoon w-full">Get Started</button>
+                    <button class="btn-3d w-full">GET STARTED</button>
                 </div>
 
                 <!-- Family -->
-                <div class="feature-box text-center reveal">
-                    <div class="text-5xl mb-4">👨‍👩‍👧‍👦</div>
-                    <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-2">Family</h3>
-                    <div class="my-6">
-                        <span class="font-fredoka text-5xl font-bold text-slate-800">$29</span>
-                        <span class="text-slate-600 text-xl">/month</span>
+                <div class="comic-panel-3d text-center reveal">
+                    <div class="text-6xl mb-6">👨‍👩‍👧‍👦</div>
+                    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Family</h3>
+                    <div class="my-8">
+                        <span class="font-fredoka text-6xl font-black text-slate-800">$29</span>
+                        <span class="text-slate-600 text-2xl font-bold">/month</span>
                     </div>
-                    <ul class="text-left space-y-3 mb-8">
+                    <ul class="text-left space-y-4 mb-10">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Everything in Monthly</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">Everything in Monthly</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Unlimited Kids</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">UNLIMITED Kids</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Priority Support</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">Priority Support</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-xl"></i>
-                            <span class="text-slate-600 font-medium">Early Access</span>
+                            <i class="fas fa-check text-green-500 mr-3 mt-1 text-2xl"></i>
+                            <span class="text-slate-600 font-bold text-lg">Early Access</span>
                         </li>
                     </ul>
-                    <button class="btn-cartoon w-full">Get Started</button>
+                    <button class="btn-3d w-full">GET STARTED</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="bg-gradient-to-r from-purple-600 to-pink-600 py-20">
-        <div class="max-w-4xl mx-auto text-center px-4 reveal">
-            <h2 class="font-fredoka text-5xl md:text-6xl font-bold text-white mb-6">
-                Ready to Make Science<br>an Adventure?
+    <!-- Final CTA -->
+    <section class="relative py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600"></div>
+        <div class="particles"></div>
+        
+        <div class="max-w-5xl mx-auto text-center px-4 relative z-10 reveal">
+            <h2 class="font-fredoka text-7xl md:text-8xl font-black text-white mb-8 drop-shadow-2xl leading-tight">
+                Ready to Make<br>Science AMAZING?
             </h2>
-            <p class="text-2xl text-white/90 mb-8 font-medium">
-                Start your free trial today. No credit card required!
+            <p class="text-4xl text-white font-bold mb-12">
+                Start your FREE trial today. No credit card needed!
             </p>
-            <button class="btn-cartoon text-2xl mb-6">
-                <i class="fas fa-rocket mr-2"></i>Start Free Trial Now
+            <button class="btn-3d text-3xl mb-8">
+                <i class="fas fa-rocket mr-3"></i>START FREE TRIAL NOW
             </button>
-            <div class="flex items-center justify-center gap-6 text-white font-fredoka font-semibold text-lg">
-                <span>✓ 14-day free trial</span>
+            <div class="flex items-center justify-center gap-8 text-white font-fredoka font-bold text-xl flex-wrap">
+                <span>✓ 14 Days Free</span>
                 <span>•</span>
-                <span>✓ Cancel anytime</span>
+                <span>✓ Cancel Anytime</span>
                 <span>•</span>
-                <span>✓ COPPA safe</span>
+                <span>✓ 100% Safe</span>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-800 py-12 border-t-4 border-slate-900">
+    <footer class="bg-slate-900 py-16 border-t-4 border-yellow-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center border-4 border-white">
-                            <span class="text-2xl">📚</span>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-14 h-14 bg-yellow-400 rounded-2xl flex items-center justify-center border-4 border-white shadow-xl">
+                            <span class="text-3xl">🚀</span>
                         </div>
-                        <span class="font-fredoka text-xl font-bold text-white">SciQuest</span>
+                        <span class="font-fredoka text-2xl font-black text-white">SciQuest</span>
                     </div>
-                    <p class="text-white/70 text-sm font-medium">
-                        Making science learning magical for every child.
+                    <p class="text-white/70 text-lg font-bold">
+                        Making science magical for every child.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-fredoka font-bold text-white mb-4 text-lg">Product</h4>
-                    <ul class="space-y-2 text-white/70 font-medium">
+                    <h4 class="font-fredoka font-black text-white mb-6 text-xl">Product</h4>
+                    <ul class="space-y-3 text-white/70 font-bold text-lg">
                         <li><a href="#" class="hover:text-white transition">How It Works</a></li>
                         <li><a href="#" class="hover:text-white transition">Topics</a></li>
                         <li><a href="#" class="hover:text-white transition">Pricing</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-fredoka font-bold text-white mb-4 text-lg">Company</h4>
-                    <ul class="space-y-2 text-white/70 font-medium">
+                    <h4 class="font-fredoka font-black text-white mb-6 text-xl">Company</h4>
+                    <ul class="space-y-3 text-white/70 font-bold text-lg">
                         <li><a href="#" class="hover:text-white transition">About</a></li>
                         <li><a href="#" class="hover:text-white transition">Blog</a></li>
                         <li><a href="#" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-fredoka font-bold text-white mb-4 text-lg">Legal</h4>
-                    <ul class="space-y-2 text-white/70 font-medium">
+                    <h4 class="font-fredoka font-black text-white mb-6 text-xl">Legal</h4>
+                    <ul class="space-y-3 text-white/70 font-bold text-lg">
                         <li><a href="#" class="hover:text-white transition">Privacy</a></li>
                         <li><a href="#" class="hover:text-white transition">Terms</a></li>
                         <li><a href="#" class="hover:text-white transition">COPPA</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-white/10 pt-8 text-center text-white/70 font-medium">
-                <p>© 2025 SciQuest Heroes. Making science fun, one story at a time. 📚✨</p>
+            <div class="border-t border-white/10 pt-8 text-center text-white/70 font-bold text-lg">
+                <p>© 2025 SciQuest Heroes. Where every child becomes a science superhero! 🚀✨</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Generate Stars
-        const starsContainer = document.querySelector('.stars');
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
+        // Generate Particles
+        const particlesContainers = document.querySelectorAll('.particles');
+        particlesContainers.forEach(container => {
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        });
 
         // Avatar Selection
         let selectedAvatar = null;
-        const avatarEmojis = {
-            'Aria': '👧🔬',
-            'Zion': '👦🚀',
-            'Luna': '👧🌊',
-            'River': '👦🌳'
-        };
 
-        function selectAvatar(element, name, role) {
+        function selectAvatar(element, name, role, emoji) {
             if (selectedAvatar) {
                 selectedAvatar.classList.remove('selected');
             }
             element.classList.add('selected');
             selectedAvatar = element;
             
-            document.getElementById('selectedEmoji').textContent = avatarEmojis[name];
-            document.getElementById('selectedName').textContent = name;
+            document.getElementById('selectedEmoji').textContent = emoji.split('')[0];
+            document.getElementById('selectedName').textContent = name.toUpperCase();
             document.getElementById('selectedRole').textContent = role;
             document.getElementById('avatarFeedback').style.display = 'block';
             
@@ -810,7 +1054,7 @@
                     behavior: 'smooth', 
                     block: 'center' 
                 });
-            }, 200);
+            }, 300);
         }
 
         // Mobile Menu Toggle
@@ -824,7 +1068,7 @@
             revealElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-                if (elementTop < windowHeight - 100) {
+                if (elementTop < windowHeight - 150) {
                     element.classList.add('active');
                 }
             });
@@ -840,6 +1084,19 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+            });
+        });
+
+        // Parallax Effect on Mouse Move
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.blob-bg').forEach((blob, index) => {
+                const speed = (index + 1) * 20;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                blob.style.transform = `translate(${x}px, ${y}px)`;
             });
         });
     </script>
