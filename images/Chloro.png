@@ -1,0 +1,1 @@
+${base64_encode(file_read('/mnt/user-data/uploads/Chloro.png'))}
