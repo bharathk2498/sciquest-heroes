@@ -477,6 +477,135 @@
             0% { background-position: -1000px 0; }
             100% { background-position: 1000px 0; }
         }
+
+        /* Comic Preview Section Styles */
+        .comic-preview-container {
+            background: linear-gradient(135deg, #ff9933 0%, #ffbb00 100%);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .comic-sample-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+            border: 4px solid #1e293b;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .comic-mini-panel {
+            aspect-ratio: 1;
+            border: 3px solid #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .comic-mini-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-badge {
+            background: white;
+            border: 3px solid;
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-badge:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .feature-badge.green {
+            border-color: #22c55e;
+        }
+
+        .feature-badge.blue {
+            border-color: #3b82f6;
+        }
+
+        .feature-badge.purple {
+            border-color: #a855f7;
+        }
+
+        .feature-badge.orange {
+            border-color: #f97316;
+        }
+
+        .audio-player-box {
+            background: white;
+            border: 4px solid #1e293b;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .audio-player-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+        }
+
+        .download-sample-btn {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            border: 4px solid #1e293b;
+            border-radius: 50px;
+            padding: 24px 48px;
+            font-weight: 800;
+            font-size: 22px;
+            color: white;
+            box-shadow: 
+                0 8px 0 #9a3412,
+                0 12px 30px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .download-sample-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 13px 0 #9a3412,
+                0 17px 40px rgba(0,0,0,0.4);
+        }
+
+        .download-sample-btn:active {
+            transform: translateY(4px);
+            box-shadow: 
+                0 4px 0 #9a3412,
+                0 6px 15px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
@@ -784,6 +913,146 @@
         </div>
     </section>
 
+    <!-- NEW: See It In Action Section -->
+    <section id="comic-preview" class="relative py-32 overflow-hidden">
+        <div class="comic-preview-container">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="font-fredoka text-6xl md:text-7xl font-black text-white mb-4 drop-shadow-2xl">
+                        See It In Action!
+                    </h2>
+                    <p class="font-fredoka text-3xl text-white/90 font-bold drop-shadow-lg">
+                        Sample Episode: Magnetism Adventure
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <!-- Left: Comic Preview -->
+                    <div class="reveal">
+                        <div class="bg-white border-4 border-slate-800 rounded-3xl p-8 shadow-2xl">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="text-4xl">✨</span>
+                                <h3 class="font-fredoka text-3xl font-black text-purple-600">Preview: Comic Story Example</h3>
+                            </div>
+                            
+                            <!-- Comic Grid - 6 panel placeholder -->
+                            <div class="comic-sample-grid mb-6">
+                                <div class="comic-mini-panel">
+                                    <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                        <div class="text-3xl mb-1">👧</div>
+                                        <div class="text-xs font-fredoka font-bold text-slate-600 text-center">What's in your hand?</div>
+                                    </div>
+                                </div>
+                                <div class="comic-mini-panel">
+                                    <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                        <div class="text-3xl mb-1">🔴</div>
+                                        <div class="text-xs font-fredoka font-bold text-slate-600 text-center">I can pick up metal!</div>
+                                    </div>
+                                </div>
+                                <div class="comic-mini-panel">
+                                    <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                        <div class="text-3xl mb-1">☀️</div>
+                                        <div class="text-xs font-fredoka font-bold text-slate-600 text-center">Sunlight, water, photosynthesis!</div>
+                                    </div>
+                                </div>
+                                <div class="comic-mini-panel">
+                                    <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                        <div class="text-3xl mb-1">🧲</div>
+                                        <div class="text-xs font-fredoka font-bold text-slate-600 text-center">THE RECIPE!</div>
+                                    </div>
+                                </div>
+                                <div class="comic-mini-panel">
+                                    <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                        <div class="text-3xl mb-1">🧠</div>
+                                        <div class="text-xs font-fredoka font-bold text-slate-600 text-center">This is so cool!</div>
+                                    </div>
+                                </div>
+                                <div class="comic-mini-panel">
+                                    <div class="w-full h-full flex flex-col items-center justify-center p-2">
+                                        <div class="text-3xl mb-1">🏆</div>
+                                        <div class="text-xs font-fredoka font-bold text-slate-600 text-center">Energy is created!</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Audio Player -->
+                            <div class="audio-player-box">
+                                <div class="flex items-center gap-4">
+                                    <i class="fas fa-volume-up text-blue-500 text-2xl"></i>
+                                    <span class="font-fredoka text-lg font-bold text-slate-800">Audio Narration Sample</span>
+                                </div>
+                                <button class="play-button">
+                                    <i class="fas fa-play text-white text-2xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: What You'll Get -->
+                    <div class="reveal">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-3 mb-8">
+                                <span class="text-4xl">✅</span>
+                                <h3 class="font-fredoka text-3xl font-black text-white drop-shadow-lg">What You'll Get</h3>
+                            </div>
+
+                            <!-- Feature Badges -->
+                            <div class="feature-badge green">
+                                <div class="flex items-start gap-4">
+                                    <i class="fas fa-check-circle text-green-500 text-3xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-fredoka text-xl font-black text-slate-800 mb-2">Personalized Comic Story</h4>
+                                        <p class="text-slate-600 font-bold">6-8 interactive panels featuring your child as the hero</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="feature-badge blue">
+                                <div class="flex items-start gap-4">
+                                    <i class="fas fa-check-circle text-blue-500 text-3xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-fredoka text-xl font-black text-slate-800 mb-2">Full Audio Narration</h4>
+                                        <p class="text-slate-600 font-bold">Professional voice acting brings the story to life</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="feature-badge purple">
+                                <div class="flex items-start gap-4">
+                                    <i class="fas fa-check-circle text-purple-500 text-3xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-fredoka text-xl font-black text-slate-800 mb-2">3-Question Quiz</h4>
+                                        <p class="text-slate-600 font-bold">Test comprehension and reinforce learning</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="feature-badge orange">
+                                <div class="flex items-start gap-4">
+                                    <i class="fas fa-check-circle text-orange-500 text-3xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-fredoka text-xl font-black text-slate-800 mb-2">Printable PDF</h4>
+                                        <p class="text-slate-600 font-bold">Keep a physical copy or share with friends</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CTA Box -->
+                            <div class="bg-yellow-300 border-4 border-slate-800 rounded-3xl p-8 text-center mt-8 shadow-2xl">
+                                <p class="font-fredoka text-xl font-black text-slate-800 mb-6">Try before you commit!</p>
+                                <button class="download-sample-btn w-full justify-center">
+                                    <i class="fas fa-download text-2xl"></i>
+                                    <span>Download Sample PDF</span>
+                                </button>
+                                <p class="text-slate-600 font-bold mt-4">Full episode • No signup required</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="topics" class="relative py-32 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600"></div>
         <div class="particles"></div>
@@ -794,19 +1063,20 @@
                 <p class="text-3xl text-white font-bold">Friendly characters who make learning FUN!</p>
             </div>
 
-<div class="comic-panel-3d text-center reveal" style="cursor: pointer;" onclick="window.location.href='mr-chloro-guide.html'">
-    <div class="text-9xl mb-6">🌱</div>
-    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Mr. Chloro</h3>
-    <p class="font-fredoka text-2xl text-purple-600 font-black mb-4">Plant Wizard</p>
-    <p class="text-slate-600 font-bold text-lg leading-relaxed mb-4">
-        "I know how plants eat sunlight! Ready to learn photosynthesis?"
-    </p>
-    <div class="mt-4">
-        <span class="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white font-fredoka font-bold px-6 py-3 rounded-full text-lg shadow-lg hover:shadow-xl transition-all">
-            Click to Explore! 🌿
-        </span>
-    </div>
-</div>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="comic-panel-3d text-center reveal" style="cursor: pointer;" onclick="window.location.href='mr-chloro-guide.html'">
+                    <div class="text-9xl mb-6">🌱</div>
+                    <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Mr. Chloro</h3>
+                    <p class="font-fredoka text-2xl text-purple-600 font-black mb-4">Plant Wizard</p>
+                    <p class="text-slate-600 font-bold text-lg leading-relaxed mb-4">
+                        "I know how plants eat sunlight! Ready to learn photosynthesis?"
+                    </p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white font-fredoka font-bold px-6 py-3 rounded-full text-lg shadow-lg hover:shadow-xl transition-all">
+                            Click to Explore! 🌿
+                        </span>
+                    </div>
+                </div>
 
                 <div class="comic-panel-3d text-center reveal">
                     <div class="text-9xl mb-6">🦖</div>
