@@ -313,29 +313,30 @@
             transition: transform 0.3s ease;
         }
 
-        /* Avatar Selection Styles */
+        /* 3D Avatar Styles */
         .avatar-card {
             position: relative;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
         }
 
         .avatar-card:hover {
-            transform: translateY(-12px) scale(1.08);
+            transform: translateY(-20px) scale(1.08);
         }
 
         .avatar-card.selected {
-            transform: translateY(-12px) scale(1.1);
+            transform: translateY(-20px) scale(1.1);
         }
 
         .avatar-card.selected::before {
             content: '';
             position: absolute;
-            inset: -3px;
-            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-            border-radius: 24px;
+            inset: -4px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #00f2fe);
+            border-radius: 32px;
             z-index: -1;
-            animation: rotateBorder 3s linear infinite;
+            animation: rotateBorder 4s linear infinite;
         }
 
         @keyframes rotateBorder {
@@ -343,44 +344,99 @@
             100% { transform: rotate(360deg); }
         }
 
-        .avatar-emoji {
-            font-size: 4rem;
-            transition: transform 0.3s ease;
+        .avatar-3d-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
         }
 
-        .avatar-card:hover .avatar-emoji {
-            transform: scale(1.2) rotate(5deg);
+        .avatar-card:hover .avatar-3d-img {
+            transform: scale(1.15) rotateZ(5deg);
+            filter: drop-shadow(0 15px 40px rgba(99, 102, 241, 0.6));
+        }
+
+        .avatar-specialty-icon {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .avatar-card:hover .avatar-specialty-icon {
+            transform: scale(1.2) rotate(15deg);
         }
 
         .check-badge {
             position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 36px;
-            height: 36px;
+            top: -15px;
+            right: -15px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #22c55e, #16a34a);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: scale(0);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.5);
+            transform: scale(0) rotate(-180deg);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.6);
+            z-index: 10;
         }
 
         .avatar-card.selected .check-badge {
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1) rotate(0deg);
         }
 
         .avatar-bounce {
-            animation: avatarBounce 0.6s ease;
+            animation: avatarBounce 0.8s ease;
         }
 
         @keyframes avatarBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            25% { transform: translateY(-30px); }
+            50% { transform: translateY(-15px); }
+            75% { transform: translateY(-25px); }
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 30px;
+            pointer-events: none;
+        }
+
+        .avatar-card:hover .avatar-glow {
+            opacity: 1;
+        }
+
+        /* Avatar Grid Responsive */
+        @media (max-width: 768px) {
+            .avatar-3d-img {
+                width: 100px;
+                height: 100px;
+            }
+            .avatar-specialty-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -509,116 +565,146 @@
         </div>
     </section>
 
-    <!-- Avatar Selection Section -->
-    <section id="avatars" class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/20 via-purple-900/10 to-transparent"></div>
+    <!-- 3D Avatar Selection Section -->
+    <section id="avatars" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/30 via-purple-900/20 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 reveal">
-                <div class="inline-block px-5 py-2 glass rounded-full text-sm font-semibold shimmer mb-6">
+            <div class="text-center mb-20 reveal">
+                <div class="inline-block px-6 py-3 glass rounded-full text-sm font-bold shimmer mb-6">
                     ✨ Choose Your Science Hero
                 </div>
-                <h2 class="font-space text-4xl md:text-5xl font-bold mb-4">
-                    Pick Your
-                    <span class="gradient-text">Adventure Companion</span>
+                <h2 class="font-space text-4xl md:text-6xl font-bold mb-6">
+                    Meet Your
+                    <span class="gradient-text">Epic Companion</span>
                 </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Every hero has unique abilities and learning styles. Choose the one that matches your personality!
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Every hero has unique superpowers! Pick the one that matches your dreams and start your adventure.
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-12">
-                <!-- Avatar 1: Boy - Curious Explorer -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Max Explorer')">
-                    <div class="avatar-emoji mb-4">👦🔬</div>
-                    <h4 class="font-bold text-lg mb-1">Max</h4>
-                    <p class="text-xs text-gray-400">Explorer</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-10 mb-16">
+                <!-- Avatar 1: Max - Explorer Boy -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'Max', 'Curious Explorer', 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=300&h=300&fit=crop" 
+                         alt="Max" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">🔬</div>
+                    <h4 class="font-bold text-xl mb-1">Max</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Curious Explorer</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
 
-                <!-- Avatar 2: Girl - Tech Genius -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Luna Tech')">
-                    <div class="avatar-emoji mb-4">👧💻</div>
-                    <h4 class="font-bold text-lg mb-1">Luna</h4>
-                    <p class="text-xs text-gray-400">Tech Genius</p>
+                <!-- Avatar 2: Luna - Tech Genius Girl -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'Luna', 'Tech Genius', 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&fit=crop" 
+                         alt="Luna" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">💻</div>
+                    <h4 class="font-bold text-xl mb-1">Luna</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Tech Genius</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
 
-                <!-- Avatar 3: Boy - Space Cadet -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Zion Astronaut')">
-                    <div class="avatar-emoji mb-4">🧑‍🚀🚀</div>
-                    <h4 class="font-bold text-lg mb-1">Zion</h4>
-                    <p class="text-xs text-gray-400">Astronaut</p>
+                <!-- Avatar 3: Zion - Space Explorer Boy -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'Zion', 'Space Explorer', 'https://images.unsplash.com/photo-1504593811423-6dd665756598?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?w=300&h=300&fit=crop" 
+                         alt="Zion" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">🚀</div>
+                    <h4 class="font-bold text-xl mb-1">Zion</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Space Explorer</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
 
-                <!-- Avatar 4: Boy - Ocean Explorer -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Noah Marine')">
-                    <div class="avatar-emoji mb-4">👦🌊</div>
-                    <h4 class="font-bold text-lg mb-1">Noah</h4>
-                    <p class="text-xs text-gray-400">Marine Biologist</p>
+                <!-- Avatar 4: Noah - Ocean Scientist Boy -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'Noah', 'Ocean Scientist', 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop" 
+                         alt="Noah" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">🌊</div>
+                    <h4 class="font-bold text-xl mb-1">Noah</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Ocean Scientist</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
 
-                <!-- Avatar 5: Girl - Chemistry Wizard -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Aria Chemist')">
-                    <div class="avatar-emoji mb-4">👩‍🔬⚗️</div>
-                    <h4 class="font-bold text-lg mb-1">Aria</h4>
-                    <p class="text-xs text-gray-400">Chemist</p>
+                <!-- Avatar 5: Aria - Chemistry Master Girl -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'Aria', 'Chemistry Master', 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop" 
+                         alt="Aria" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">⚗️</div>
+                    <h4 class="font-bold text-xl mb-1">Aria</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Chemistry Master</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
 
-                <!-- Avatar 6: Boy - Robotics Engineer -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Kai Robot')">
-                    <div class="avatar-emoji mb-4">👦🤖</div>
-                    <h4 class="font-bold text-lg mb-1">Kai</h4>
-                    <p class="text-xs text-gray-400">Engineer</p>
+                <!-- Avatar 6: Kai - Robot Engineer Boy -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'Kai', 'Robot Engineer', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" 
+                         alt="Kai" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">🤖</div>
+                    <h4 class="font-bold text-xl mb-1">Kai</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Robot Engineer</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
 
-                <!-- Avatar 7: Non-binary - Eco Warrior -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'River Eco')">
-                    <div class="avatar-emoji mb-4">🧑‍🦱🌱</div>
-                    <h4 class="font-bold text-lg mb-1">River</h4>
-                    <p class="text-xs text-gray-400">Eco Warrior</p>
+                <!-- Avatar 7: River - Eco Warrior -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'River', 'Eco Warrior', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=300&fit=crop" 
+                         alt="River" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">🌱</div>
+                    <h4 class="font-bold text-xl mb-1">River</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Eco Warrior</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
 
-                <!-- Avatar 8: Non-binary - Inventor -->
-                <div class="avatar-card glass p-6 rounded-3xl text-center" onclick="selectAvatar(this, 'Phoenix Inventor')">
-                    <div class="avatar-emoji mb-4">🧑‍🔧⚡</div>
-                    <h4 class="font-bold text-lg mb-1">Phoenix</h4>
-                    <p class="text-xs text-gray-400">Inventor</p>
+                <!-- Avatar 8: Phoenix - Inventor -->
+                <div class="avatar-card glass p-6 rounded-3xl text-center relative" onclick="selectAvatar(this, 'Phoenix', 'Super Inventor', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop')">
+                    <div class="avatar-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop" 
+                         alt="Phoenix" class="avatar-3d-img mx-auto mb-4">
+                    <div class="avatar-specialty-icon">⚡</div>
+                    <h4 class="font-bold text-xl mb-1">Phoenix</h4>
+                    <p class="text-sm text-purple-300 font-semibold">Super Inventor</p>
                     <div class="check-badge">
-                        <i class="fas fa-check text-white text-lg"></i>
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Selected Avatar Display -->
             <div class="text-center reveal">
-                <div id="avatarFeedback" class="glass p-8 rounded-3xl max-w-2xl mx-auto" style="display: none;">
-                    <div class="text-6xl mb-4" id="selectedEmoji">👦🔬</div>
-                    <h3 class="text-3xl font-bold mb-2">
-                        Welcome, <span class="gradient-text" id="selectedName">Explorer</span>!
-                    </h3>
-                    <p class="text-gray-300 mb-6">Your science adventure begins now. Let's discover amazing things together!</p>
-                    <button class="btn-primary px-8 py-4 rounded-xl font-bold text-lg magnetic">
-                        <i class="fas fa-rocket mr-2"></i>Start Learning
-                    </button>
+                <div id="avatarFeedback" class="glass-strong p-12 rounded-3xl max-w-3xl mx-auto relative overflow-hidden" style="display: none;">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20"></div>
+                    <div class="relative z-10">
+                        <img id="selectedAvatarImg" src="" alt="Selected Avatar" class="w-32 h-32 rounded-full mx-auto mb-6 shadow-2xl border-4 border-white/20">
+                        <h3 class="text-4xl md:text-5xl font-bold mb-3">
+                            Welcome, <span class="gradient-text" id="selectedName">Hero</span>!
+                        </h3>
+                        <p class="text-xl md:text-2xl text-purple-200 mb-2" id="selectedRole">Explorer</p>
+                        <p class="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
+                            Your epic science adventure starts now! Get ready to explore, discover, and become a true hero of science! 🚀
+                        </p>
+                        <button class="btn-primary px-10 py-5 rounded-2xl font-bold text-xl magnetic glow-primary">
+                            <i class="fas fa-rocket mr-3"></i>Launch Adventure
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1086,7 +1172,7 @@
         // Avatar Selection Logic
         let selectedAvatar = null;
 
-        function selectAvatar(element, name) {
+        function selectAvatar(element, name, role, imgSrc) {
             // Remove previous selection
             if (selectedAvatar) {
                 selectedAvatar.classList.remove('selected');
@@ -1098,9 +1184,9 @@
             selectedAvatar = element;
             
             // Update feedback display
-            const emoji = element.querySelector('.avatar-emoji').textContent;
-            document.getElementById('selectedEmoji').textContent = emoji;
+            document.getElementById('selectedAvatarImg').src = imgSrc;
             document.getElementById('selectedName').textContent = name;
+            document.getElementById('selectedRole').textContent = role;
             document.getElementById('avatarFeedback').style.display = 'block';
             
             // Smooth scroll to feedback
@@ -1114,7 +1200,7 @@
             // Remove bounce class after animation
             setTimeout(() => {
                 element.classList.remove('avatar-bounce');
-            }, 600);
+            }, 800);
         }
 
         // Custom Cursor
