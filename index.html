@@ -38,7 +38,6 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Advanced Gradient Mesh Background */
         .hero-gradient {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             position: relative;
@@ -75,7 +74,6 @@
             66% { transform: translate(-100px, 100px) scale(0.9); }
         }
 
-        /* 3D Avatar Card with Glassmorphism */
         .avatar-3d-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px) saturate(180%);
@@ -146,47 +144,27 @@
             100% { transform: scale(1) rotate(0); }
         }
 
-        /* 3D Character Sphere */
-        .character-sphere {
-            width: 160px;
-            height: 160px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 85px;
+        .character-avatar {
+            width: 200px;
+            height: 200px;
             margin: 0 auto 24px;
             position: relative;
-            box-shadow: 
-                0 20px 40px rgba(102, 126, 234, 0.4),
-                inset 0 -20px 40px rgba(0,0,0,0.2),
-                inset 0 20px 40px rgba(255,255,255,0.2);
             transition: all 0.4s ease;
             transform-style: preserve-3d;
         }
 
-        .character-sphere::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            left: 15%;
-            width: 50%;
-            height: 30%;
-            background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: rotate(-30deg);
-        }
-
-        .avatar-3d-card:hover .character-sphere {
+        .avatar-3d-card:hover .character-avatar {
             transform: scale(1.1) rotateY(15deg);
-            box-shadow: 
-                0 25px 50px rgba(102, 126, 234, 0.6),
-                inset 0 -20px 40px rgba(0,0,0,0.3),
-                inset 0 20px 40px rgba(255,255,255,0.3);
         }
 
-        /* Specialty Badge 3D */
+        .character-avatar svg {
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+
+        .avatar-3d-card:hover .character-avatar svg {
+            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.4));
+        }
+
         .specialty-badge-3d {
             position: absolute;
             bottom: -15px;
@@ -213,7 +191,6 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Glassmorphism Cards */
         .glass-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(30px) saturate(180%);
@@ -234,7 +211,6 @@
                 inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
-        /* 3D Comic Panel */
         .comic-panel-3d {
             background: white;
             border: 5px solid #1e293b;
@@ -255,7 +231,6 @@
                 20px 20px 40px rgba(0,0,0,0.3);
         }
 
-        /* Cartoon Button 3D */
         .btn-3d {
             background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
             border: 4px solid #1e293b;
@@ -305,7 +280,6 @@
                 0 6px 15px rgba(0,0,0,0.3);
         }
 
-        /* Particle System */
         .particles {
             position: absolute;
             width: 100%;
@@ -336,7 +310,6 @@
             }
         }
 
-        /* Feature Icon 3D */
         .feature-icon-3d {
             width: 90px;
             height: 90px;
@@ -359,7 +332,6 @@
             transform: rotateY(180deg);
         }
 
-        /* Morphing Blob Background */
         @keyframes morph {
             0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
             25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
@@ -376,7 +348,6 @@
             filter: blur(40px);
         }
 
-        /* Speech Bubble 3D */
         .speech-bubble-3d {
             position: relative;
             background: white;
@@ -420,7 +391,6 @@
             z-index: 1;
         }
 
-        /* Parallax Sections */
         .parallax-section {
             background-attachment: fixed;
             background-position: center;
@@ -428,7 +398,6 @@
             background-size: cover;
         }
 
-        /* Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(100px);
@@ -440,7 +409,6 @@
             transform: translateY(0);
         }
 
-        /* Premium Card */
         .premium-card {
             background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
             backdrop-filter: blur(20px);
@@ -474,7 +442,6 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
         }
 
-        /* Mobile Menu */
         .mobile-menu {
             transform: translateX(100%);
             transition: transform 0.3s ease;
@@ -484,16 +451,23 @@
             transform: translateX(0);
         }
 
-        /* Loading Animation */
         @keyframes shimmer {
             0% { background-position: -1000px 0; }
             100% { background-position: 1000px 0; }
+        }
+
+        @keyframes avatarBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .character-avatar:hover {
+            animation: avatarBounce 0.6s ease-in-out;
         }
     </style>
 </head>
 <body>
     
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 backdrop-blur-xl bg-white/80 border-b border-white/20 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
@@ -504,7 +478,6 @@
                     <span class="font-fredoka text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">SciQuest Heroes</span>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="#how-it-works" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-bold text-lg">How It Works</a>
                     <a href="#avatars" class="font-fredoka text-slate-700 hover:text-purple-600 transition font-bold text-lg">Choose Avatar</a>
@@ -515,7 +488,6 @@
                     </button>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <button class="lg:hidden border-4 border-slate-800 p-3 rounded-2xl bg-yellow-400 shadow-lg hover:scale-110 transition-transform" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-2xl text-slate-800"></i>
                 </button>
@@ -523,7 +495,6 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl border-l-4 border-slate-800 z-50 p-8 lg:hidden shadow-2xl" id="mobileMenu">
         <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-4xl text-slate-800 hover:scale-110 transition-transform">
             <i class="fas fa-times"></i>
@@ -537,7 +508,6 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-32 pb-20">
         <div class="particles"></div>
         <div class="blob-bg" style="top: 10%; left: 5%;"></div>
@@ -584,7 +554,6 @@
                 </div>
             </div>
 
-            <!-- Sample Comic Preview -->
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto reveal">
                 <div class="comic-panel-3d">
                     <div class="text-8xl text-center mb-6">🌿</div>
@@ -613,7 +582,6 @@
         </div>
     </section>
 
-    <!-- 3D Avatar Selection -->
     <section id="avatars" class="relative py-32 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"></div>
         <div class="particles"></div>
@@ -634,60 +602,177 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-16">
-                <!-- Avatar 1 - Aria the Scientist -->
+                
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Aria', 'Science Explorer', '👧🔬')">
-                    <div class="character-sphere">
-                        <span>👧</span>
+                    <div class="character-avatar">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="ariaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#c44569;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="70" r="45" fill="url(#ariaGrad)"/>
+                            <circle cx="85" cy="65" r="6" fill="#fff"/>
+                            <circle cx="115" cy="65" r="6" fill="#fff"/>
+                            <circle cx="87" cy="67" r="3" fill="#000"/>
+                            <circle cx="117" cy="67" r="3" fill="#000"/>
+                            <path d="M 85 80 Q 100 88 115 80" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#4A90E2"/>
+                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#4A90E2"/>
+                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#4A90E2"/>
+                            <circle cx="60" cy="130" r="8" fill="#fff" opacity="0.3"/>
+                            <path d="M 60 40 Q 70 25 100 30 Q 130 25 140 40" fill="#8B4513" stroke="#6B3410" stroke-width="2"/>
+                            <circle cx="180" cy="80" r="25" fill="#E8F4F8" opacity="0.7"/>
+                            <text x="180" y="88" font-size="20" text-anchor="middle">🔬</text>
+                        </svg>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Aria</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Science Explorer</p>
                     <div class="specialty-badge-3d">🔬</div>
                 </div>
 
-                <!-- Avatar 2 - Zion the Astronaut -->
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Zion', 'Space Captain', '👦🚀')">
-                    <div class="character-sphere">
-                        <span>👦</span>
+                    <div class="character-avatar">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="zionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="70" r="45" fill="url(#zionGrad)"/>
+                            <rect x="70" y="25" width="60" height="30" rx="15" fill="#1a1a2e" opacity="0.8"/>
+                            <circle cx="85" cy="65" r="6" fill="#fff"/>
+                            <circle cx="115" cy="65" r="6" fill="#fff"/>
+                            <circle cx="87" cy="67" r="3" fill="#000"/>
+                            <circle cx="117" cy="67" r="3" fill="#000"/>
+                            <path d="M 85 78 Q 100 85 115 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#FF6B35"/>
+                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#FF6B35"/>
+                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#FF6B35"/>
+                            <polygon points="100,40 95,50 105,50" fill="#FFD700"/>
+                            <circle cx="170" cy="60" r="20" fill="#FFE5B4" opacity="0.8"/>
+                            <text x="170" y="68" font-size="18" text-anchor="middle">🚀</text>
+                        </svg>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Zion</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Space Captain</p>
                     <div class="specialty-badge-3d">🚀</div>
                 </div>
 
-                <!-- Avatar 3 - Luna the Ocean Explorer -->
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Luna', 'Ocean Explorer', '👧🌊')">
-                    <div class="character-sphere">
-                        <span>👧</span>
+                    <div class="character-avatar">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="lunaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="70" r="45" fill="url(#lunaGrad)"/>
+                            <circle cx="85" cy="65" r="6" fill="#fff"/>
+                            <circle cx="115" cy="65" r="6" fill="#fff"/>
+                            <circle cx="87" cy="67" r="3" fill="#000"/>
+                            <circle cx="117" cy="67" r="3" fill="#000"/>
+                            <path d="M 85 80 Q 100 88 115 80" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#00CED1"/>
+                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#00CED1"/>
+                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#00CED1"/>
+                            <path d="M 50 35 Q 60 20 80 25 Q 90 20 100 25" fill="#4169E1" stroke="#1E3A8A" stroke-width="2"/>
+                            <path d="M 100 25 Q 110 20 120 25 Q 140 20 150 35" fill="#4169E1" stroke="#1E3A8A" stroke-width="2"/>
+                            <circle cx="175" cy="75" r="22" fill="#B0E0E6" opacity="0.7"/>
+                            <text x="175" y="83" font-size="18" text-anchor="middle">🌊</text>
+                        </svg>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Luna</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Ocean Explorer</p>
                     <div class="specialty-badge-3d">🌊</div>
                 </div>
 
-                <!-- Avatar 4 - River the Nature Hero -->
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'River', 'Nature Hero', '👦🌳')">
-                    <div class="character-sphere">
-                        <span>👦</span>
+                    <div class="character-avatar">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#56ab2f;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#a8e063;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="70" r="45" fill="url(#riverGrad)"/>
+                            <circle cx="85" cy="65" r="6" fill="#fff"/>
+                            <circle cx="115" cy="65" r="6" fill="#fff"/>
+                            <circle cx="87" cy="67" r="3" fill="#000"/>
+                            <circle cx="117" cy="67" r="3" fill="#000"/>
+                            <path d="M 85 78 Q 100 85 115 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#8B4513"/>
+                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#8B4513"/>
+                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#8B4513"/>
+                            <path d="M 70 40 Q 80 25 100 30 Q 120 25 130 40" fill="#654321" stroke="#4A3010" stroke-width="2"/>
+                            <circle cx="90" cy="35" r="8" fill="#228B22"/>
+                            <circle cx="110" cy="35" r="8" fill="#32CD32"/>
+                            <circle cx="175" cy="70" r="23" fill="#E8F5E9" opacity="0.8"/>
+                            <text x="175" y="78" font-size="18" text-anchor="middle">🌱</text>
+                        </svg>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">River</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Nature Hero</p>
                     <div class="specialty-badge-3d">🌱</div>
                 </div>
 
-                <!-- Avatar 5 - Nova the Inventor -->
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Nova', 'Super Inventor', '👧⚡')">
-                    <div class="character-sphere">
-                        <span>👧</span>
+                    <div class="character-avatar">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="novaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ffd89b;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="70" r="45" fill="url(#novaGrad)"/>
+                            <circle cx="85" cy="65" r="6" fill="#fff"/>
+                            <circle cx="115" cy="65" r="6" fill="#fff"/>
+                            <circle cx="87" cy="67" r="3" fill="#000"/>
+                            <circle cx="117" cy="67" r="3" fill="#000"/>
+                            <path d="M 85 80 Q 100 88 115 80" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#9B59B6"/>
+                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#9B59B6"/>
+                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#9B59B6"/>
+                            <circle cx="70" cy="40" r="12" fill="#FFD700"/>
+                            <circle cx="130" cy="40" r="12" fill="#FFD700"/>
+                            <rect x="80" y="28" width="40" height="8" rx="4" fill="#333"/>
+                            <circle cx="170" cy="80" r="24" fill="#FFF9C4" opacity="0.8"/>
+                            <text x="170" y="88" font-size="18" text-anchor="middle">⚡</text>
+                        </svg>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Nova</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Super Inventor</p>
                     <div class="specialty-badge-3d">⚡</div>
                 </div>
 
-                <!-- Avatar 6 - Max the Explorer -->
                 <div class="avatar-3d-card" onclick="selectAvatar(this, 'Max', 'Dino Detective', '👦🦖')">
-                    <div class="character-sphere">
-                        <span>👦</span>
+                    <div class="character-avatar">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="maxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FFE66D;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="70" r="45" fill="url(#maxGrad)"/>
+                            <circle cx="85" cy="65" r="6" fill="#fff"/>
+                            <circle cx="115" cy="65" r="6" fill="#fff"/>
+                            <circle cx="87" cy="67" r="3" fill="#000"/>
+                            <circle cx="117" cy="67" r="3" fill="#000"/>
+                            <path d="M 85 78 Q 100 85 115 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="100" cy="120" rx="50" ry="60" fill="#E67E22"/>
+                            <rect x="50" y="115" width="20" height="50" rx="10" fill="#E67E22"/>
+                            <rect x="130" y="115" width="20" height="50" rx="10" fill="#E67E22"/>
+                            <ellipse cx="100" cy="35" rx="35" ry="15" fill="#D35400"/>
+                            <rect x="90" y="25" width="20" height="15" fill="#8B4513"/>
+                            <circle cx="170" cy="75" r="25" fill="#FFE4B5" opacity="0.8"/>
+                            <text x="170" y="83" font-size="20" text-anchor="middle">🦖</text>
+                        </svg>
                     </div>
                     <h4 class="font-fredoka text-3xl font-black text-white text-center mb-2">Max</h4>
                     <p class="font-fredoka text-white/80 font-bold text-center text-lg">Dino Detective</p>
@@ -711,7 +796,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section id="how-it-works" class="relative py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 reveal">
@@ -753,7 +837,6 @@
         </div>
     </section>
 
-    <!-- Topic Guides -->
     <section id="topics" class="relative py-32 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600"></div>
         <div class="particles"></div>
@@ -801,7 +884,6 @@
         </div>
     </section>
 
-    <!-- For Parents -->
     <section id="for-parents" class="relative py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 reveal">
@@ -844,7 +926,6 @@
         </div>
     </section>
 
-    <!-- Pricing -->
     <section class="relative py-32 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900"></div>
         <div class="particles"></div>
@@ -856,7 +937,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                <!-- Free -->
                 <div class="comic-panel-3d text-center reveal">
                     <div class="text-6xl mb-6">🆓</div>
                     <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Free Trial</h3>
@@ -881,7 +961,6 @@
                     <button class="btn-3d w-full">START FREE</button>
                 </div>
 
-                <!-- Monthly - Popular -->
                 <div class="comic-panel-3d text-center reveal border-yellow-400 border-8 relative transform scale-110">
                     <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-yellow-400 border-4 border-slate-800 rounded-full px-6 py-2 shadow-2xl">
                         <span class="font-fredoka font-black text-slate-800 text-lg">⭐ BEST VALUE</span>
@@ -917,7 +996,6 @@
                     <button class="btn-3d w-full">GET STARTED</button>
                 </div>
 
-                <!-- Family -->
                 <div class="comic-panel-3d text-center reveal">
                     <div class="text-6xl mb-6">👨‍👩‍👧‍👦</div>
                     <h3 class="font-fredoka text-4xl font-black text-slate-800 mb-4">Family</h3>
@@ -949,7 +1027,6 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="relative py-32 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600"></div>
         <div class="particles"></div>
@@ -974,7 +1051,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-slate-900 py-16 border-t-4 border-yellow-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
@@ -1021,7 +1097,6 @@
     </footer>
 
     <script>
-        // Generate Particles
         const particlesContainers = document.querySelectorAll('.particles');
         particlesContainers.forEach(container => {
             for (let i = 0; i < 30; i++) {
@@ -1034,7 +1109,6 @@
             }
         });
 
-        // Avatar Selection
         let selectedAvatar = null;
 
         function selectAvatar(element, name, role, emoji) {
@@ -1057,12 +1131,10 @@
             }, 300);
         }
 
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
         }
 
-        // Scroll Reveal
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             revealElements.forEach(element => {
@@ -1076,7 +1148,6 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1087,7 +1158,6 @@
             });
         });
 
-        // Parallax Effect on Mouse Move
         document.addEventListener('mousemove', (e) => {
             const mouseX = e.clientX / window.innerWidth;
             const mouseY = e.clientY / window.innerHeight;
