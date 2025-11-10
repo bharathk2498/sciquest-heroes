@@ -88,6 +88,32 @@
             font-weight: bold;
         }
 
+        .guide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .badge-chloro {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .badge-rex {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .badge-aqua {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+        }
+
         .btn-3d {
             background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
             border: 4px solid #1e293b;
@@ -208,7 +234,7 @@
                 </div>
             </div>
 
-            <!-- Step 2: Topic Selection -->
+            <!-- Step 2: Topic Selection with Guide Characters -->
             <div id="topicSelection" class="glass-card p-12 hidden">
                 <div class="text-center mb-8">
                     <div class="stella-float inline-block mb-6">
@@ -218,7 +244,7 @@
                         Awesome! Now pick a science topic! ⚡
                     </h2>
                     <p class="text-xl text-slate-600 font-bold">
-                        Which topic sounds exciting to you?
+                        I'll introduce you to an expert guide for your topic!
                     </p>
                 </div>
 
@@ -237,62 +263,65 @@
     </section>
 
     <script>
+        // Map topics to guide characters
         const topicsByGrade = {
+            5: [
+                { 
+                    icon: "🌿", 
+                    title: "Photosynthesis: How Plants Make Food", 
+                    key: "photosynthesis",
+                    guide: "chloro",
+                    guideName: "Mr. Chloro",
+                    guideRole: "Plant Wizard",
+                    guideEmoji: "🌱"
+                },
+                { 
+                    icon: "🔬", 
+                    title: "Structure and Properties of Matter", 
+                    key: "matter-structure",
+                    guide: "stella",
+                    guideName: "Captain Stella",
+                    guideRole: "Space Captain",
+                    guideEmoji: "🚀"
+                },
+                { 
+                    icon: "🌱", 
+                    title: "Matter and Energy in Organisms and Ecosystems", 
+                    key: "organisms-energy",
+                    guide: "stella",
+                    guideName: "Captain Stella",
+                    guideRole: "Space Captain",
+                    guideEmoji: "🚀"
+                },
+                { 
+                    icon: "🌍", 
+                    title: "Earth's Systems", 
+                    key: "earth-systems",
+                    guide: "stella",
+                    guideName: "Captain Stella",
+                    guideRole: "Space Captain",
+                    guideEmoji: "🚀"
+                },
+                { 
+                    icon: "🪐", 
+                    title: "Earth and Space Science", 
+                    key: "space-science",
+                    guide: "stella",
+                    guideName: "Captain Stella",
+                    guideRole: "Space Captain",
+                    guideEmoji: "🚀"
+                }
+            ],
+            // Add other grades with similar structure...
             1: [
-                { icon: "💡", title: "Waves: Light and Sound", key: "light-sound" },
-                { icon: "🔬", title: "Structure, Function, and Information Processing", key: "structure-function" },
-                { icon: "🪐", title: "Space Systems: Patterns and Cycles", key: "space-patterns" }
+                { icon: "💡", title: "Waves: Light and Sound", key: "light-sound", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" },
+                { icon: "🔬", title: "Structure, Function, and Information Processing", key: "structure-function", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" },
+                { icon: "🪐", title: "Space Systems: Patterns and Cycles", key: "space-patterns", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" }
             ],
             2: [
-                { icon: "⚛️", title: "Structure and Properties of Matter", key: "matter-properties" },
-                { icon: "🌿", title: "Interdependent Relationships in Ecosystems", key: "ecosystems" },
-                { icon: "🌍", title: "Earth's Systems: Processes that Shape the Earth", key: "earth-processes" }
-            ],
-            3: [
-                { icon: "⚡", title: "Forces and Interactions", key: "forces" },
-                { icon: "🦋", title: "Interdependent Relationships in Ecosystems", key: "ecosystems" },
-                { icon: "🧬", title: "Inheritance and Variation of Traits: Life Cycles and Traits", key: "traits" },
-                { icon: "🌤️", title: "Weather and Climate", key: "weather" }
-            ],
-            4: [
-                { icon: "⚡", title: "Energy", key: "energy" },
-                { icon: "🌊", title: "Waves: Waves and Information", key: "waves-info" },
-                { icon: "🧠", title: "Structure, Function, and Information Processing", key: "structure-function" },
-                { icon: "🏔️", title: "Earth's Systems: Processes that Shape the Earth", key: "earth-processes" }
-            ],
-            5: [
-                { icon: "🌿", title: "Photosynthesis: How Plants Make Food", key: "photosynthesis" },
-                { icon: "🔬", title: "Structure and Properties of Matter", key: "matter-structure" },
-                { icon: "🌱", title: "Matter and Energy in Organisms and Ecosystems", key: "organisms-energy" },
-                { icon: "🌍", title: "Earth's Systems", key: "earth-systems" },
-                { icon: "🪐", title: "Earth and Space Science", key: "space-science" }
-            ],
-            6: [
-                { icon: "⚛️", title: "Structure and Properties of Matter", key: "matter-structure-6" },
-                { icon: "⚡", title: "Energy in Chemical Processes", key: "energy-chemical" },
-                { icon: "🧬", title: "From Molecules to Organisms: Structures and Processes", key: "molecules-organisms" },
-                { icon: "🌍", title: "Earth's Systems", key: "earth-systems-6" },
-                { icon: "🌌", title: "Space Systems", key: "space-systems-6" }
-            ],
-            7: [
-                { icon: "🧠", title: "Structure, Function, and Information Processing", key: "structure-function-7" },
-                { icon: "🌱", title: "Matter and Energy in Organisms and Ecosystems", key: "organisms-ecosystems-7" },
-                { icon: "🦋", title: "Interdependent Relationships in Ecosystems", key: "ecosystems-7" },
-                { icon: "🌍", title: "Earth's Systems: Surface Processes", key: "earth-surface-7" }
-            ],
-            8: [
-                { icon: "⚡", title: "Forces and Interactions", key: "forces-8" },
-                { icon: "🔋", title: "Energy", key: "energy-8" },
-                { icon: "🌊", title: "Waves and Electromagnetic Radiation", key: "waves-em-8" },
-                { icon: "🌌", title: "Earth's Place in the Universe", key: "earth-universe-8" },
-                { icon: "🌍", title: "Human Impacts on Earth Systems", key: "human-impacts-8" }
-            ],
-            9: [
-                { icon: "⚛️", title: "Structure and Properties of Matter", key: "matter-9" },
-                { icon: "🧪", title: "Chemical Reactions", key: "chemical-reactions-9" },
-                { icon: "🎯", title: "Forces and Motion", key: "forces-motion-9" },
-                { icon: "⚡", title: "Energy in Physical Systems", key: "energy-physical-9" },
-                { icon: "🌊", title: "Waves and Information Transfer", key: "waves-info-9" }
+                { icon: "⚛️", title: "Structure and Properties of Matter", key: "matter-properties", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" },
+                { icon: "🌿", title: "Interdependent Relationships in Ecosystems", key: "ecosystems", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" },
+                { icon: "🌍", title: "Earth's Systems: Processes that Shape the Earth", key: "earth-processes", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" }
             ]
         };
 
@@ -302,13 +331,11 @@
         function selectGrade(grade) {
             selectedGrade = grade;
             
-            // Update UI
             document.querySelectorAll('.grade-card').forEach(card => {
                 card.classList.remove('selected');
             });
             event.target.closest('.grade-card').classList.add('selected');
 
-            // Load topics for selected grade
             setTimeout(() => {
                 loadTopics(grade);
                 document.getElementById('gradeSelection').classList.add('hidden');
@@ -321,8 +348,12 @@
             const topicList = document.getElementById('topicList');
             topicList.innerHTML = '';
             
-            const topics = topicsByGrade[grade];
+            const topics = topicsByGrade[grade] || [];
             topics.forEach((topic, index) => {
+                const badgeClass = topic.guide === 'chloro' ? 'badge-chloro' : 
+                                   topic.guide === 'rex' ? 'badge-rex' : 
+                                   topic.guide === 'aqua' ? 'badge-aqua' : 'badge-chloro';
+                
                 const topicCard = document.createElement('div');
                 topicCard.className = 'topic-card';
                 topicCard.onclick = () => selectTopic(index);
@@ -332,6 +363,10 @@
                         <div class="flex-1">
                             <h3 class="font-fredoka text-2xl font-bold text-slate-800 mb-2">${topic.title}</h3>
                             <p class="text-slate-600 font-semibold">Grade ${grade} Science Topic</p>
+                            <div class="guide-badge ${badgeClass}">
+                                <span>${topic.guideEmoji}</span>
+                                <span>With ${topic.guideName}</span>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -342,13 +377,11 @@
         function selectTopic(index) {
             selectedTopic = index;
             
-            // Update UI
             document.querySelectorAll('.topic-card').forEach(card => {
                 card.classList.remove('selected');
             });
             event.target.closest('.topic-card').classList.add('selected');
 
-            // Enable button
             document.getElementById('startAdventureBtn').disabled = false;
         }
 
@@ -361,8 +394,14 @@
             sessionStorage.setItem('selectedGrade', selectedGrade);
             sessionStorage.setItem('selectedTopic', JSON.stringify(topic));
 
-            // Redirect to guide generation page
-            window.location.href = `stella-guide-generator.html?grade=${selectedGrade}&topic=${topic.key}`;
+            // Route based on guide character
+            if (topic.key === 'photosynthesis' && topic.guide === 'chloro') {
+                // Stella + Mr. Chloro dual-avatar experience
+                window.location.href = 'stella-photosynthesis-adventure.html';
+            } else {
+                // Default Stella guide
+                window.location.href = `stella-guide-generator.html?grade=${selectedGrade}&topic=${topic.key}`;
+            }
         }
     </script>
 </body>
