@@ -864,7 +864,7 @@
                         <span class="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent" id="selectedName">HERO</span>!
                     </h3>
                     <p class="font-fredoka text-3xl text-white/90 font-bold mb-10" id="selectedRole">Explorer</p>
-                    <button class="btn-3d text-2xl" id="createStoryBtn">
+                    <button class="btn-3d text-2xl" id="createStoryBtn" onclick="createStory()">
                         <i class="fas fa-book-open mr-3"></i>CREATE MY FIRST STORY!
                     </button>
                 </div>
@@ -1359,21 +1359,15 @@
             }, 300);
         }
 
-        // Set up create story button click handler on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const createStoryBtn = document.getElementById('createStoryBtn');
-            if (createStoryBtn) {
-                createStoryBtn.addEventListener('click', function() {
-                    // Navigate based on selected character
-                    if (selectedCharacterName === 'Stella') {
-                        window.location.href = 'stella-space-guide.html';
-                    } else if (selectedCharacterName) {
-                        // Default for other characters - could add more guides later
-                        window.location.href = 'stella-space-guide.html';
-                    }
-                });
+        function createStory() {
+            // Navigate based on selected character
+            if (selectedCharacterName === 'Stella') {
+                window.location.href = 'stella-space-guide.html';
+            } else if (selectedCharacterName) {
+                // Default for other characters - could add more guides later
+                window.location.href = 'stella-space-guide.html';
             }
-        });
+        }
 
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
