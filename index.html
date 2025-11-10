@@ -864,7 +864,7 @@
                         <span class="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent" id="selectedName">HERO</span>!
                     </h3>
                     <p class="font-fredoka text-3xl text-white/90 font-bold mb-10" id="selectedRole">Explorer</p>
-                    <button class="btn-3d text-2xl">
+                    <button class="btn-3d text-2xl" id="createStoryBtn">
                         <i class="fas fa-book-open mr-3"></i>CREATE MY FIRST STORY!
                     </button>
                 </div>
@@ -1336,6 +1336,7 @@
         });
 
         let selectedAvatar = null;
+        let selectedCharacterName = '';
 
         function selectAvatar(element, name, role, emoji) {
             if (selectedAvatar) {
@@ -1343,16 +1344,29 @@
             }
             element.classList.add('selected');
             selectedAvatar = element;
-            
+            selectedCharacterName = name;
+
             document.getElementById('selectedEmoji').textContent = emoji;
             document.getElementById('selectedName').textContent = name.toUpperCase();
             document.getElementById('selectedRole').textContent = role;
             document.getElementById('avatarFeedback').style.display = 'block';
-            
+
+            // Set up the create story button navigation
+            const createStoryBtn = document.getElementById('createStoryBtn');
+            createStoryBtn.onclick = function() {
+                // Navigate based on selected character
+                if (name === 'Stella') {
+                    window.location.href = 'stella-space-guide.html';
+                } else {
+                    // Default for other characters - could add more guides later
+                    window.location.href = 'stella-space-guide.html';
+                }
+            };
+
             setTimeout(() => {
-                document.getElementById('avatarFeedback').scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
+                document.getElementById('avatarFeedback').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
                 });
             }, 300);
         }
