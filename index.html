@@ -1332,25 +1332,31 @@
 
         let selectedAvatar = null;
 
-        function selectAvatar(element, name, role, emoji) {
-            if (selectedAvatar) {
-                selectedAvatar.classList.remove('selected');
-            }
-            element.classList.add('selected');
-            selectedAvatar = element;
-            
-            document.getElementById('selectedEmoji').textContent = emoji;
-            document.getElementById('selectedName').textContent = name.toUpperCase();
-            document.getElementById('selectedRole').textContent = role;
-            document.getElementById('avatarFeedback').style.display = 'block';
-            
-            setTimeout(() => {
-                document.getElementById('avatarFeedback').scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-            }, 300);
-        }
+function selectAvatar(element, name, role, emoji) {
+    // Stella redirects immediately, no feedback needed
+    if (name === 'Stella') {
+        window.location.href = 'stella-grade-selector.html';
+        return;
+    }
+    
+    if (selectedAvatar) {
+        selectedAvatar.classList.remove('selected');
+    }
+    element.classList.add('selected');
+    selectedAvatar = element;
+    
+    document.getElementById('selectedEmoji').textContent = emoji;
+    document.getElementById('selectedName').textContent = name.toUpperCase();
+    document.getElementById('selectedRole').textContent = role;
+    document.getElementById('avatarFeedback').style.display = 'block';
+    
+    setTimeout(() => {
+        document.getElementById('avatarFeedback').scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+    }, 300);
+}
 
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
