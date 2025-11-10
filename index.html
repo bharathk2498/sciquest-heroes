@@ -1351,18 +1351,6 @@
             document.getElementById('selectedRole').textContent = role;
             document.getElementById('avatarFeedback').style.display = 'block';
 
-            // Set up the create story button navigation
-            const createStoryBtn = document.getElementById('createStoryBtn');
-            createStoryBtn.onclick = function() {
-                // Navigate based on selected character
-                if (name === 'Stella') {
-                    window.location.href = 'stella-space-guide.html';
-                } else {
-                    // Default for other characters - could add more guides later
-                    window.location.href = 'stella-space-guide.html';
-                }
-            };
-
             setTimeout(() => {
                 document.getElementById('avatarFeedback').scrollIntoView({
                     behavior: 'smooth',
@@ -1370,6 +1358,22 @@
                 });
             }, 300);
         }
+
+        // Set up create story button click handler on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const createStoryBtn = document.getElementById('createStoryBtn');
+            if (createStoryBtn) {
+                createStoryBtn.addEventListener('click', function() {
+                    // Navigate based on selected character
+                    if (selectedCharacterName === 'Stella') {
+                        window.location.href = 'stella-space-guide.html';
+                    } else if (selectedCharacterName) {
+                        // Default for other characters - could add more guides later
+                        window.location.href = 'stella-space-guide.html';
+                    }
+                });
+            }
+        });
 
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
