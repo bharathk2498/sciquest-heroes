@@ -181,13 +181,13 @@
             <div id="gradeSelection" class="glass-card p-12 mb-8">
                 <div class="text-center mb-8">
                     <div class="stella-float inline-block mb-6">
-                        <img src="images/Stella.png" alt="Captain Stella" class="w-48 h-48 mx-auto">
+                        <img src="assets/avatars/Stella_flora.png" alt="Captain Stella Flora" class="w-48 h-48 mx-auto">
                     </div>
                     <h1 class="font-fredoka text-5xl font-black text-slate-800 mb-4">
                         Hi There, Young Scientist! 🚀
                     </h1>
                     <p class="text-2xl text-slate-600 font-bold">
-                        I'm Captain Stella! Let's create an amazing science story together.
+                        I'm Captain Stella Flora! Let's create an amazing science story together.
                     </p>
                     <p class="text-xl text-slate-500 font-semibold mt-4">
                         First, tell me... What grade are you in?
@@ -238,7 +238,7 @@
             <div id="topicSelection" class="glass-card p-12 hidden">
                 <div class="text-center mb-8">
                     <div class="stella-float inline-block mb-6">
-                        <img src="images/Stella.png" alt="Captain Stella" class="w-32 h-32 mx-auto">
+                        <img src="assets/avatars/Stella_flora.png" alt="Captain Stella Flora" class="w-32 h-32 mx-auto">
                     </div>
                     <h2 class="font-fredoka text-4xl font-black text-slate-800 mb-4">
                         Awesome! Now pick a science topic! ⚡
@@ -312,7 +312,6 @@
                     guideEmoji: "🚀"
                 }
             ],
-            // Add other grades with similar structure...
             1: [
                 { icon: "💡", title: "Waves: Light and Sound", key: "light-sound", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" },
                 { icon: "🔬", title: "Structure, Function, and Information Processing", key: "structure-function", guide: "stella", guideName: "Captain Stella", guideRole: "Space Captain", guideEmoji: "🚀" },
@@ -390,16 +389,12 @@
 
             const topic = topicsByGrade[selectedGrade][selectedTopic];
             
-            // Store selections in sessionStorage
             sessionStorage.setItem('selectedGrade', selectedGrade);
             sessionStorage.setItem('selectedTopic', JSON.stringify(topic));
 
-            // Route based on guide character
             if (topic.key === 'photosynthesis' && topic.guide === 'chloro') {
-                // Stella + Mr. Chloro dual-avatar experience
                 window.location.href = 'stella-photosynthesis-adventure.html';
             } else {
-                // Default Stella guide
                 window.location.href = `stella-guide-generator.html?grade=${selectedGrade}&topic=${topic.key}`;
             }
         }
