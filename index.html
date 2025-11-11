@@ -335,7 +335,7 @@
         .feature-icon-3d {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #a855f7, #ec4899);
             border-radius: 25px;
             display: flex;
             align-items: center;
@@ -365,7 +365,7 @@
             position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
             animation: morph 20s ease-in-out infinite, float 25s ease-in-out infinite;
             filter: blur(40px);
         }
@@ -480,7 +480,7 @@
 
         /* Comic Preview Section Styles */
         .comic-preview-container {
-            background: linear-gradient(135deg, #ff9933 0%, #ffbb00 100%);
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
             border-radius: 40px 40px 0 0;
         }
 
@@ -556,7 +556,7 @@
         }
 
         .play-button {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            background: linear-gradient(135deg, #a855f7, #ec4899);
             border: none;
             width: 60px;
             height: 60px;
@@ -575,7 +575,7 @@
         }
 
         .download-sample-btn {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
             border: 4px solid #1e293b;
             border-radius: 50px;
             padding: 24px 48px;
@@ -583,7 +583,7 @@
             font-size: 22px;
             color: white;
             box-shadow: 
-                0 8px 0 #9a3412,
+                0 8px 0 #701a75,
                 0 12px 30px rgba(0,0,0,0.3);
             transition: all 0.2s ease;
             cursor: pointer;
@@ -594,18 +594,18 @@
         }
 
         .download-sample-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 13px 0 #9a3412,
-                0 17px 40px rgba(0,0,0,0.4);
-        }
+    transform: translateY(-5px);
+    box-shadow: 
+        0 13px 0 #701a75,    /* ✅ NEW PURPLE */
+        0 17px 40px rgba(0,0,0,0.4);
+}
 
-        .download-sample-btn:active {
-            transform: translateY(4px);
-            box-shadow: 
-                0 4px 0 #9a3412,
-                0 6px 15px rgba(0,0,0,0.3);
-        }
+.download-sample-btn:active {
+    transform: translateY(4px);
+    box-shadow: 
+        0 4px 0 #701a75,     /* ✅ NEW PURPLE */
+        0 6px 15px rgba(0,0,0,0.3);
+}
     </style>
 </head>
 <body>
@@ -614,7 +614,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 <div class="flex items-center space-x-4">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 rounded-3xl flex items-center justify-center border-4 border-white shadow-2xl transform hover:scale-110 transition-transform">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-pink-600 rounded-3xl flex items-center justify-center border-4 border-white shadow-2xl transform hover:scale-110 transition-transform">
                         <span class="text-4xl">🚀</span>
                     </div>
                     <span class="font-fredoka text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">SciQuest Heroes</span>
@@ -725,7 +725,7 @@
     </section>
 
     <section id="avatars" class="relative py-32 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900"></div>
         <div class="particles"></div>
         <div class="blob-bg" style="top: 20%; right: 10%;"></div>
         
@@ -1054,7 +1054,7 @@
     </section>
 
     <section id="topics" class="relative py-32 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-600 via-purple-500 to-pink-600"></div>
         <div class="particles"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
