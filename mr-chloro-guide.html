@@ -253,7 +253,6 @@
             border-color: #ef4444;
         }
 
-        /* NEW STYLES FOR STORY SECTION */
         .comic-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -338,7 +337,7 @@
                     <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center border-3 border-white shadow-lg">
                         <span class="text-3xl">🌱</span>
                     </div>
-                    <span class="font-fredoka text-2xl font-bold text-slate-800">Mr. Chloro Guide</span>
+                    <span class="font-fredoka text-2xl font-bold text-slate-800" id="navTitle">Mr. Chloro Guide</span>
                 </a>
                 <a href="index.html" class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:shadow-lg transition">
                     <i class="fas fa-arrow-left mr-2"></i>Back to Home
@@ -364,16 +363,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12">
                 <div class="chloro-character mb-8">
-                    <img src="images/Chloro.png" alt="Mr. Chloro - The Plant Wizard" />
+                    <img id="characterImage" src="assets/avatars/Chloro.png" alt="Mr. Chloro - The Plant Wizard" />
                 </div>
-                <h1 class="font-fredoka text-6xl md:text-7xl font-black text-white mb-6 drop-shadow-2xl">
+                <h1 class="font-fredoka text-6xl md:text-7xl font-black text-white mb-6 drop-shadow-2xl" id="heroTitle">
                     Meet Mr. Chloro
                 </h1>
-                <p class="text-3xl text-white font-bold mb-4">
+                <p class="text-3xl text-white font-bold mb-4" id="heroSubtitle">
                     The Plant Wizard
                 </p>
                 <div class="inline-block glass-card px-8 py-4 mb-8">
-                    <p class="font-fredoka text-2xl font-bold text-green-600">
+                    <p class="font-fredoka text-2xl font-bold text-green-600" id="heroCatchphrase">
                         "Sunlight in, sugar out!"
                     </p>
                 </div>
@@ -416,14 +415,14 @@
                             <span class="text-3xl">👤</span>
                             <div>
                                 <div class="text-sm font-bold text-slate-500">Name</div>
-                                <div class="text-lg font-bold text-slate-800">Mr. Chloro</div>
+                                <div class="text-lg font-bold text-slate-800" id="characterName">Mr. Chloro</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-3 mb-3">
                             <span class="text-3xl">⚡</span>
                             <div>
                                 <div class="text-sm font-bold text-slate-500">Role</div>
-                                <div class="text-lg font-bold text-slate-800">Plant Wizard</div>
+                                <div class="text-lg font-bold text-slate-800" id="characterRole">Plant Wizard</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-3 mb-3">
@@ -492,13 +491,11 @@
         </div>
     </section>
 
-    <!-- NEW STORY SECTION -->
     <section id="story" class="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="font-fredoka text-5xl font-black text-slate-800 mb-4 text-center">🌱 The Amazing Plant Food Factory</h2>
             <p class="text-xl text-slate-600 font-bold text-center mb-12">A Science Adventure About Photosynthesis</p>
 
-            <!-- Audio Player -->
             <div class="audio-player-section">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="text-4xl">🎧</span>
@@ -516,7 +513,6 @@
                 </div>
             </div>
 
-            <!-- Comic Panels -->
             <div class="section-card mt-8">
                 <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-6">Interactive Comic Story</h3>
                 
@@ -533,7 +529,6 @@
                 </div>
             </div>
 
-            <!-- Storybook Content -->
             <div class="section-card">
                 <h3 class="font-fredoka text-3xl font-bold text-slate-800 mb-4">📖 Chapter 1: The Mystery of the Sad Plant</h3>
                 <div class="space-y-4 text-slate-700 leading-relaxed">
@@ -570,7 +565,6 @@
                 </div>
             </div>
 
-            <!-- Key Concepts Box -->
             <div class="interactive-box">
                 <h4 class="font-fredoka text-2xl font-bold text-green-800 mb-4">🔑 Key Concepts You'll Learn</h4>
                 <ul class="space-y-3">
@@ -921,6 +915,23 @@
         let openAccordion = null;
         const totalSections = 6;
         let completedSections = new Set();
+
+        function initializeCharacter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromParam = urlParams.get('from');
+            
+            if (fromParam === 'stella') {
+                document.getElementById('characterImage').src = 'assets/avatars/stella_flora.png';
+                document.getElementById('heroTitle').textContent = 'Meet Stella Flora';
+                document.getElementById('heroSubtitle').textContent = 'The Nature Explorer';
+                document.getElementById('heroCatchphrase').textContent = '"Growing knowledge, one leaf at a time!"';
+                document.getElementById('navTitle').textContent = 'Stella Flora Guide';
+                document.getElementById('characterName').textContent = 'Stella Flora';
+                document.getElementById('characterRole').textContent = 'Nature Explorer';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initializeCharacter);
 
         function toggleAccordion(index) {
             const content = document.getElementById('content' + index);
