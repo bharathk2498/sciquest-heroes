@@ -123,4 +123,4 @@ Issues and PRs welcome!
 
 🔗 **Live Demo**: [bharathk2498.github.io/sciquest-heroes](https://bharathk2498.github.io/sciquest-heroes/)
 
-Thank you
+Thank you for going through!
