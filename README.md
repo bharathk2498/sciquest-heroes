@@ -122,3 +122,5 @@ Issues and PRs welcome!
 **Built with ❤️ for science education**
 
 🔗 **Live Demo**: [bharathk2498.github.io/sciquest-heroes](https://bharathk2498.github.io/sciquest-heroes/)
+
+Thank you
