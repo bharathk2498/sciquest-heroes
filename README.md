@@ -69,7 +69,7 @@ cd sciquest-heroes
 - Fully responsive grid system
 - Touch-optimized interactions
 - Hamburger menu for mobile (if needed)
-- Optimized font sizes for readability
+- Optimized font sizes for readability purpose only
 
 ## 🔧 Customization
 
